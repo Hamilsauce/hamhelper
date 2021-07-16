@@ -39,7 +39,27 @@ export default class HamHelper {
 		}
 		return el;
 	}
-	
+
+	static newElement(tag = 'div', attrs = {}, ...children) {
+		const el = document.createElement(tag);
+
+		for (let attr of Object.keys(attrs)) {
+			if (attr === 'data') {
+				Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val);
+			} else if (attr === 'classList') {
+				el.classList.add(...classList)
+			} else {
+				el.setAttribute(attr, attrs[attr])
+			}
+		}
+
+		for (let child of children) {
+			el.appendChild(child);
+		}
+
+		return el;
+	}
+
 	static setElementDataset(el, dataObj = {}) {
 		if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
 		else this.log('no data provided')
@@ -48,3 +68,14 @@ export default class HamHelper {
 }
 
 // export default new HamHelper();
+
+function elt(name, attrs, ...children) {
+	let dom = document.createElement(name);
+	for (let attr of Object.keys(attrs)) {
+		dom.setAttribute(attr, attrs[attr]);
+	}
+	for (let child of children) {
+		dom.appendChild(child);
+	}
+	return dom;
+}
