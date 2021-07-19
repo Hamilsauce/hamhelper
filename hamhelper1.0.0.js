@@ -43,7 +43,7 @@ export default class HamHelper {
 			if (attr === 'data') {
 				Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val);
 			} else if (attr === 'classList') {
-				el.classList.add(...classList)
+				el.classList.add(...attrs[attr])
 			} else {
 				el.setAttribute(attr, attrs[attr])
 			}

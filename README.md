@@ -1,4 +1,9 @@
 # hamhelper
+
+url: https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js
+
+import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js'
+
 Class containing helper functions, especially for DOM manipulation
 
 
