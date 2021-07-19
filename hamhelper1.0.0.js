@@ -1,14 +1,10 @@
 export default class HamHelper {
 	constructor() {}
 
-	static log(msg = '') {
-		console.log(msg)
-	}
+	static log(msg = '') { console.log(msg) }
 
 	// !!obj
-	static isObjectEmpty(obj) {
-		return Object.keys(obj).length === 0;
-	}
+	static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
 
 	// !!queryselector
 	static qs(selector, parentEl = document) {
