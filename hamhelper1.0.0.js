@@ -1,3 +1,5 @@
+// Last updated: 8/8/21
+
 export default class HamHelper {
 	constructor() {}
 
