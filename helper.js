@@ -54,7 +54,7 @@ console.log('newb', newb);
 
 H.qs('#app').appendChild(newb)
 
-H.help();
+H.help()
 
 
 // const myEl = H.createNewElement('div','my-el', ['fap', 'fap-two', 'fap-3'],{selected: false, roll: 'king'})
