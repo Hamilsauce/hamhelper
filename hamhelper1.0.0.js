@@ -2,10 +2,10 @@
 
 export default class HamHelper {
 	constructor() {}
-	
-	static 
 
-	static log(msg = '') { console.log(msg) }
+
+	// !!map
+	static mapFromObject(obj) { return new Map(Object.entries(obj)) }
 
 	// !!obj
 	static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
@@ -65,6 +65,8 @@ HAM FUNCTIONS:
 - qsa(selector, parentEl = document);
 	
 - isObjectEmpty(obj) { return Object.keys(obj).length === 0 };
+
+- mapFromObject(obj) { return new Map(Object.entries(obj)) };
 	
 - setElementDataset(el, dataObj = {});
 	

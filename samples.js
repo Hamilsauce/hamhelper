@@ -41,7 +41,13 @@ const sortObjectPropertiesByName = (obj, type = 'asc') => {
 	return sortedObj
 }
 
-console.log(sortObjectPropertiesByName(transaction, 'asc'));
+
+const mapFromObject = (obj) => {
+	return new Map(Object.entries(obj));
+}
+
+// console.log(sortObjectPropertiesByName(transaction, 'asc'));
+console.log(...mapFromObject(transaction));
 
 
 
