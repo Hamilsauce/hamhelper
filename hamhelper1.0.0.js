@@ -1,7 +1,9 @@
-// Last updated: 8/8/21
+// Last updated: 8/14/21
 
 export default class HamHelper {
 	constructor() {}
+	
+	static 
 
 	static log(msg = '') { console.log(msg) }
 
