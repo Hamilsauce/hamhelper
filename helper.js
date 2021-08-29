@@ -1,17 +1,15 @@
 import H from './hamhelper1.0.0.js'
+H.selectAllContent(document.querySelector('.log'))
+
 console.log('Ham');
-H.log('fuck')
 
 const scriptTag = document.createElement('script')
 const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 const newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 
 console.log(scriptTag, newSvg.nodeName, newLine.nodeName);
-H.log(scriptTag.nodeName)
-
 
 const output = H.qs('.output')
-H.log(output.nodeName)
 
 // console.log('creating newEl');
 
