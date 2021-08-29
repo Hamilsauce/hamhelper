@@ -1,4 +1,4 @@
-// Last updated: 8/14/21
+// Last updated: 8/30/21
 
 export default class HamHelper {
   constructor() {}
@@ -7,7 +7,8 @@ export default class HamHelper {
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
   // !!obj
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
-
+  
+  // !!select ~~selecttext
   static selectAllContent(target) {
     if (!(target instanceof Element)) return;
     target.addEventListener('click', e => {
@@ -23,9 +24,7 @@ export default class HamHelper {
       }
     });
   }
-
-
-
+  
   // !!queryselector
   static qs(selector, parentEl = document) {
     if (typeof selector !== 'string') {
@@ -33,7 +32,6 @@ export default class HamHelper {
       return;
     } else return parentEl.querySelector(selector);
   }
-
   // !!querySelectorAll
   static qsa(selector, parentEl = document) {
     if (typeof selector != 'string') {
@@ -43,13 +41,10 @@ export default class HamHelper {
       return parentEl.querySelectorAll(selector);
     }
   }
-
   // !!Create Element
   static newElement(tag = 'div', attrs = {}, children, textContent) {
     const el = document.createElement(tag);
-
     if (textContent) el.textContent = `${textContent}`;
-
     for (let attr of Object.keys(attrs)) {
       if (attr === 'data') {
         Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val);
@@ -59,12 +54,10 @@ export default class HamHelper {
         el.setAttribute(attr, attrs[attr])
       }
     }
-
     children.forEach(child => el.appendChild(child));
-
     return el;
   }
-
+  // ~~element  ~~dataset 
   static setElementDataset(el, dataObj = {}) {
     if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
     else this.log('no data provided')
@@ -72,13 +65,17 @@ export default class HamHelper {
 
   static help() {
     const helpText = console.log(`
-HAM FUNCTIONS:
+*******************
+HAM FUNCTIONS
+*******************
 	
 - newElement(tag = 'div', attrs = {}, children = [], textContent = ');
 	
 - qs(selector, parentEl = document);
 	
 - qsa(selector, parentEl = document);
+
+- selectAllContent(target = Element) 
 	
 - isObjectEmpty(obj) { return Object.keys(obj).length === 0 };
 
@@ -87,7 +84,8 @@ HAM FUNCTIONS:
 - setElementDataset(el, dataObj = {});
 	
 - log(msg = '') { console.log(msg) };
-`);
+********************
+`.trim());
     // console.log(helpText);
   }
 

@@ -1,7 +1,7 @@
 import H from './hamhelper1.0.0.js'
 H.selectAllContent(document.querySelector('.log'))
 
-console.log('Ham');
+console.log(H.help());
 
 const scriptTag = document.createElement('script')
 const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
