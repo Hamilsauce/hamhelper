@@ -7,7 +7,7 @@ export default class HamHelper {
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
   // !!obj
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
-  
+
   // !!select ~~selecttext
   static selectAllContent(target) {
     if (!(target instanceof Element)) return;
@@ -24,8 +24,19 @@ export default class HamHelper {
       }
     });
   }
-  
-  // !!queryselector
+
+  static longPress(el, time = 700, callback) {
+    el.addEventListener('touchstart', e => {
+      window.hamLongPressTimer = setTimeout(() => {
+        callback(el)
+      }, 700)
+    })
+    el.addEventListener('touchend', e => {
+      clearTimeout(window.hamLongPressTimer)
+    })
+  }
+
+  // ~queryselector
   static qs(selector, parentEl = document) {
     if (typeof selector !== 'string') {
       console.error('error: selector must be string (in HamHelper.qs()).');
@@ -42,7 +53,7 @@ export default class HamHelper {
     }
   }
   // !!Create Element
-  static newElement(tag = 'div', attrs = {}, children, textContent) {
+  static newElement(tag = 'div', attrs = {}, children, textContent = '') {
     const el = document.createElement(tag);
     if (textContent) el.textContent = `${textContent}`;
     for (let attr of Object.keys(attrs)) {
