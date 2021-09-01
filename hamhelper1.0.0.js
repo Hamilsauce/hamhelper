@@ -28,7 +28,7 @@ export default class HamHelper {
   static longPress(el, time = 700, callback) {
     el.addEventListener('touchstart', e => {
       window.hamLongPressTimer = setTimeout(() => {
-        callback(el)
+        callback(e)
       }, 700)
     })
     el.addEventListener('touchend', e => {
@@ -53,14 +53,17 @@ export default class HamHelper {
     }
   }
   // !!Create Element
-  static newElement(tag = 'div', attrs = {}, children, textContent = '') {
+  static newElement(tag = 'div', attrs = {}, children = [], textContent = '') {
     const el = document.createElement(tag);
-    if (textContent) el.textContent = `${textContent}`;
+    // if (textContent) el.textContent = `${textContent}`;
     for (let attr of Object.keys(attrs)) {
       if (attr === 'data') {
         Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val);
       } else if (attr === 'classList') {
         el.classList.add(...attrs[attr])
+      } else if (attr === 'style') {
+        if (typeof attrs[attr] === 'string') el.style = attrs[attr];
+        else Object.entries(attrs[attr]).forEach(([prop, val]) => el.style[prop] = val);
       } else {
         el.setAttribute(attr, attrs[attr])
       }
@@ -79,25 +82,31 @@ export default class HamHelper {
 *******************
 HAM FUNCTIONS
 *******************
-	
+
+    === DOM ===
+
 - newElement(tag = 'div', attrs = {}, children = [], textContent = ');
-	
+
 - qs(selector, parentEl = document);
-	
+
 - qsa(selector, parentEl = document);
 
+- setElementDataset(el, dataObj = {});
+
 - selectAllContent(target = Element) 
-	
+
+- longPress(element, time = 700, callback);
+
+    === Data Structures ===
+
 - isObjectEmpty(obj) { return Object.keys(obj).length === 0 };
 
 - mapFromObject(obj) { return new Map(Object.entries(obj)) };
 	
-- setElementDataset(el, dataObj = {});
 	
 - log(msg = '') { console.log(msg) };
 ********************
 `.trim());
-    // console.log(helpText);
   }
 
 
