@@ -3,6 +3,18 @@
 export default class HamHelper {
   constructor() {}
 
+  // !!Zip Array
+  static array = {
+    zip(...arrs) {
+      return arrs[0]
+        .reduce((acc, curr, i) => {
+          let row = [];
+          arrs.forEach((arr, j) => row = [...row, arr[i]]);
+          return [...acc, row];
+        }, []);
+    }
+  }
+
   // !!map
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
   // !!obj
@@ -71,6 +83,7 @@ export default class HamHelper {
     children.forEach(child => el.appendChild(child));
     return el;
   }
+
   // ~~element  ~~dataset 
   static setElementDataset(el, dataObj = {}) {
     if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
@@ -83,9 +96,14 @@ export default class HamHelper {
 HAM FUNCTIONS
 *******************
 
+    === Array ===
+    
+- static array.zip(...arrs)
+  
+  
     === DOM ===
 
-- newElement(tag = 'div', attrs = {}, children = [], textContent = ');
+- newElement(tag = 'div', attrs = {}, children = [], textContent = '');
 
 - qs(selector, parentEl = document);
 
