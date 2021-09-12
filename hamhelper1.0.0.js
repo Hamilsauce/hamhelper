@@ -2,10 +2,16 @@
 
 export default class HamHelper {
   constructor() {}
+  // @Text
+  static Text = {
+    capitalizeText([first, ...rest]) {
+      if (typeof first === 'string') return `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
+    }
+  }
 
-  // !!Zip Array
-  static array = {
+  static Array = {
     zip(...arrs) {
+      // !!Zip Array
       return arrs[0]
         .reduce((acc, curr, i) => {
           let row = [];
@@ -92,6 +98,11 @@ export default class HamHelper {
 HAM FUNCTIONS
 *******************
 
+    === Text ===
+    
+- capitalizeText([first, ...rest]) {
+
+  
     === Array ===
     
 - static array.zip(...arrs)
