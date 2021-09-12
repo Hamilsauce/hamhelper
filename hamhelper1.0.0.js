@@ -39,55 +39,51 @@ export default class HamHelper {
 
   static longPress(el, time = 700, callback) {
     el.addEventListener('touchstart', e => {
-      window.hamLongPressTimer = setTimeout(() => {
-        callback(e)
-      }, 700)
-    })
-    el.addEventListener('touchend', e => {
-      clearTimeout(window.hamLongPressTimer)
-    })
+      window.hamLongPressTimer = setTimeout(() => { callback(e) }, 700)
+    });
+    el.addEventListener('touchend', e => { clearTimeout(window.hamLongPressTimer) })
   }
 
-  // ~queryselector
-  static qs(selector, parentEl = document) {
-    if (typeof selector !== 'string') {
-      console.error('error: selector must be string (in HamHelper.qs()).');
-      return;
-    } else return parentEl.querySelector(selector);
-  }
-  // !!querySelectorAll
-  static qsa(selector, parentEl = document) {
-    if (typeof selector != 'string') {
-      console.error('error: selector must be string (in HamHelper.qsa()).');
-      return;
-    } else {
-      return parentEl.querySelectorAll(selector);
-    }
-  }
-  // !!Create Element
-  static newElement(tag = 'div', attrs = {}, children = [], textContent = '') {
-    const el = document.createElement(tag);
-    // if (textContent) el.textContent = `${textContent}`;
-    for (let attr of Object.keys(attrs)) {
-      if (attr === 'data') {
-        Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val);
-      } else if (attr === 'classList') {
-        el.classList.add(...attrs[attr])
-      } else if (attr === 'style') {
-        if (typeof attrs[attr] === 'string') el.style = attrs[attr];
-        else Object.entries(attrs[attr]).forEach(([prop, val]) => el.style[prop] = val);
-      } else {
-        el.setAttribute(attr, attrs[attr])
+  static DOM = {
+    qs(selector, parentEl = document) {
+      // @queryselector
+      if (typeof selector === 'string') return parentEl.querySelector(selector);
+      else console.error('error: selector must be string (in HamHelper.qs()).');
+    },
+
+    qsa(selector, parentEl = document) {
+      // @querySelectorAll
+      if (typeof selector === 'string') return parentEl.querySelectorAll(selector);
+      else console.error('error: selector must be string (in HamHelper.qsa()).');
+    },
+
+    newElement(tag = 'div', attrs = {}, children = [], textContent = '') {
+      // @createElement
+      const el = document.createElement(tag);
+      for (let attr of Object.keys(attrs)) {
+        if (attr === 'data') { Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val) }
+        else if (attr === 'classList') { el.classList.add(...attrs[attr]) }
+        else if (attr === 'style') {
+          if (typeof attrs[attr] === 'string') el.style = attrs[attr];
+          else Object.entries(attrs[attr]).forEach(([prop, val]) => el.style[prop] = val);
+        } 
+        else el.setAttribute(attr, attrs[attr])
       }
-    }
-    children.forEach(child => el.appendChild(child));
-    return el;
-  }
+      children.forEach(child => el.appendChild(child));
+      return el;
+    },
 
-  // ~~element  ~~dataset 
-  static setElementDataset(el, dataObj = {}) {
-    if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
-    else this.log('no data provided')
+    removeAllChildren(parent) {
+      // @removeAllChildren
+      try { while (parent.firstChild) { parent.removeChild(parent.firstChild) } }
+      catch (e) { console.error(`HAM ERROR: Unable to remove children from PARENT (${parent})`) }
+    },
+
+    setElementDataset(el, dataObj = {}) {
+      // @element  @dataset 
+      if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
+      else this.log('no data provided')
+    }
   }
 
   static help() {

@@ -8,7 +8,7 @@ const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 const newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 
 // console.log(scriptTag, newSvg.nodeName, newLine.nodeName);
-const output = H.qs('.output')
+const output = H.DOM.qs('.output')
 // console.log('creating newEl');
 const attributes = {
   id: 'my-el',
@@ -31,7 +31,9 @@ let arr1 = ['main', 'article', 'div', 'p'];
 let arr2 = [1, 2, 3, 4];
 let arr3 = [true, false, true, true];
 
-console.log('H.array.zip(arr1,arr2, arr3)', H.array.zip(arr1,arr2, arr3))
+console.log('H.array.zip(arr1,arr2, arr3)',
+  H.array.zip(arr1, arr2, arr3)
+)
 
 const els = arr1
   .map(tag => document.createElement(tag))
@@ -52,12 +54,12 @@ const cMap = [
 console.log(chs);
 
 
-const newb = H.newElement('div', attributes, els);
+const newb = H.DOM.newElement('div', attributes, els);
 
 console.log('newb', newb);
 H.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
 
-H.qs('#app').appendChild(newb);
+H.DOM.qs('#app').appendChild(newb);
 
 
 
