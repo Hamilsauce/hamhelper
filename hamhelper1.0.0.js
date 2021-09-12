@@ -66,7 +66,7 @@ export default class HamHelper {
         else if (attr === 'style') {
           if (typeof attrs[attr] === 'string') el.style = attrs[attr];
           else Object.entries(attrs[attr]).forEach(([prop, val]) => el.style[prop] = val);
-        } 
+        }
         else el.setAttribute(attr, attrs[attr])
       }
       children.forEach(child => el.appendChild(child));
@@ -99,24 +99,32 @@ HAM FUNCTIONS
   
     === DOM ===
 
-- newElement(tag = 'div', attrs = {}, children = [], textContent = '');
+- DOM.newElement(tag = 'div', attrs = {}, children = [], textContent = '');
 
-- qs(selector, parentEl = document);
+- DOM.qs(selector, parentEl = document);
 
-- qsa(selector, parentEl = document);
+- DOM.qsa(selector, parentEl = document);
 
-- setElementDataset(el, dataObj = {});
+- DOM.removeAllChildren(parent = element);
+
+- DOM.setElementDataset(el, dataObj = {});
+
+
+    === EVENT ===
 
 - selectAllContent(target = Element) 
 
 - longPress(element, time = 700, callback);
 
-    === Data Structures ===
+
+    === OBJECTS, MAPS, ETC ===
 
 - isObjectEmpty(obj) { return Object.keys(obj).length === 0 };
 
 - mapFromObject(obj) { return new Map(Object.entries(obj)) };
 	
+	
+    === HELP ===
 	
 - log(msg = '') { console.log(msg) };
 ********************
