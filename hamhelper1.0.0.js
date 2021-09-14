@@ -92,11 +92,12 @@ export default class HamHelper {
     }
   }
 
-  static help() {
+  static help(msg = 'Leave a message such as where this call is located.') {
     const helpText = console.log(`
 *******************
 HAM FUNCTIONS
 *******************
+*MESSAGE: ${msg}
 
     === Text ===
     
