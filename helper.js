@@ -31,6 +31,57 @@ let arr1 = ['main', 'article', 'div', 'p'];
 let arr2 = [1, 2, 3, 4];
 let arr3 = [true, false, true, true];
 
+
+let arr4 = [
+  {
+    name: 'jake',
+    age: 33,
+    toes: [1, 2, 3, 4]
+},
+  {
+    name: 'tom',
+    age: 32,
+    toes: [1, 2, 3]
+},
+  {
+    name: 'sue',
+    age: 31,
+    toes: [1, 2]
+},
+  {
+    name: 'sally',
+    age: 40,
+    toes: [1, 2]
+  }
+];
+let arr5 = [
+  {
+    name: 'jake',
+    age: 33,
+    toes: [1, 2, 3, 4]
+},
+  {
+    name: 'tom',
+    age: 32,
+    toes: [1, 2, 3]
+},
+// sue should be in output
+  {
+    name: 'sue',
+    age: 31,
+    toes: [1, 2, 3, 4, 5]
+},
+// sue should be in output
+  {
+    name: 'jackie',
+    age: 10,
+    toes: [1]
+  }
+];
+
+console.log('H.array.difference(arr4, arr5)', H.array.difference(arr4, arr5))
+
+
 console.log('H.array.zip(arr1,arr2, arr3)',
   H.array.zip(arr1, arr2, arr3)
 )

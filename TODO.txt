@@ -1,0 +1,55 @@
+DOM MAPPER:
+
+  const getAttributes = (attributes)=>{
+    return Array.prototype.map.call(attributes, function(attribute) {
+      return {
+        att: attribute.name,
+        value: attribute.value
+      };
+    });
+  };
+  
+  const createDOMMap = (element, isSVG) =>{
+    return Array.prototype.map.call(element.childNodes, (function(node) {
+      var details = {
+        content: node.childNodes && node.childNodes.length > 0 ? null : node.textContent,
+        atts: node.nodeType !== 1 ? [] : getAttributes(node.attributes),
+        type: node.nodeType === 3 ? 'text' : (node.nodeType === 8 ? 'comment' : node.tagName.toLowerCase()),
+        node: node
+      };
+      details.objectType = document.createElement('div').nodeName
+      details.isSVG = isSVG || details.type === 'svg';
+      details.children = createDOMMap(node, details.isSVG);
+      return details;
+    }));
+  };
+
+
+
+/ARRAY METHODS:
+
+  Distinct: Reduce using includes on the acc
+  
+  Repeat: Repeat a pattern for drfined # of times
+  
+  RemoveMatchingItems:
+  Create a list from {1, 2, 3, 4, 5, 5} without {1, 5}.
+  List.RemoveMatchingItems({1, 2, 3, 4, 5, 5}, {1, 5})
+  
+  List.ReplaceMatchingItems(list as list, replacements as list, optional equationCriteria as any) as list 
+  Performs the given replacements to the list list. A replacement operation replacements consists of a list of two values, the old value and new value, provided in a list. An optional equation criteria value, equationCriteria, can be specified to control equality testing.
+  
+  
+  List.Difference(list1 as list, list2 as list, optional equationCriteria as any) as list
+  Returns array of items in list1 not in list2. Duplicates supported.
+  
+  List.Intersect(lists as list, optional equationCriteria as any) as list 
+  Returns the intersection of the list values found in the input list lists. 
+  An optional parameter, equationCriteria, can be specified.
+  
+  EXAMPLE 1
+  Find the intersection of 
+  {1..5}, {2..6}, {3..7}.
+  
+  List.Intersect({{1..5}, {2..6}, {3..7}})
+  => 3, 4, 5

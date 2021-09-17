@@ -1,7 +1,8 @@
-// Last updated: 8/30/21
+// Last updated: 9/15/21
 
 export default class HamHelper {
   constructor() {}
+
   // @Text
   static Text = {
     capitalizeText([first, ...rest]) {
@@ -9,22 +10,32 @@ export default class HamHelper {
     }
   }
 
-  static Array = {
+  static array = {
     zip(...arrs) {
-      // !!Zip Array
       return arrs[0]
         .reduce((acc, curr, i) => {
           let row = [];
           arrs.forEach((arr, j) => row = [...row, arr[i]]);
           return [...acc, row];
         }, []);
-    }
+    },
+
+    difference(arr1, arr2, comparer) { return arr1.filter(arr1El => !arr2.includes(arr1El)) },
+    intersection(arr1, arr2, comparer) { return arr1.filter(arr1El => arr2.includes(arr1El)) },
+    union(arr1, arr2, comparer) { return [...new Set([...arr1, ...arr2])] },
   }
 
   // !!map
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
   // !!obj
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
+
+  static event = {
+    emit(source, action, config) {
+      const evt = new CustomEvent(action, config);
+      source.dispatchEvent(evt);
+    }
+  }
 
   // !!select ~~selecttext
   static selectAllContent(target) {
@@ -63,9 +74,11 @@ export default class HamHelper {
       else console.error('error: selector must be string (in HamHelper.qsa()).');
     },
 
-    newElement(tag = 'div', attrs = {}, children = [], textContent = '') {
+    newElement(tag = 'div', attrs = {}, children = [], template = '') {
       // @createElement
       const el = document.createElement(tag);
+      el.innerHTML = template;
+
       for (let attr of Object.keys(attrs)) {
         if (attr === 'data') { Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val) }
         else if (attr === 'classList') { el.classList.add(...attrs[attr]) }
@@ -106,12 +119,15 @@ HAM FUNCTIONS
   
     === Array ===
     
-- static array.zip(...arrs)
+- zip(...arrs);
+- difference(arr1, arr2, comparer);
+- intersection(arr1, arr2, comparer);
+- union(arr1, arr2, comparer);
   
   
     === DOM ===
 
-- DOM.newElement(tag = 'div', attrs = {}, children = [], textContent = '');
+- DOM.newElement(tag = 'div', attrs = {}, children = [], template = '');
 
 - DOM.qs(selector, parentEl = document);
 
