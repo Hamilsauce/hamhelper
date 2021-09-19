@@ -4,7 +4,7 @@ export default class HamHelper {
   constructor() {}
 
   // @Text
-  static Text = {
+  static text = {
     capitalizeText([first, ...rest]) {
       if (typeof first === 'string') return `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
     }
