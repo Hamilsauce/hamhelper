@@ -1,5 +1,4 @@
 // Last updated: 9/15/21
-
 export default class HamHelper {
   constructor() {}
 
@@ -8,6 +7,19 @@ export default class HamHelper {
     capitalize([first, ...rest]) {
       if (typeof first === 'string') return `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
     }
+  }
+
+  static date = {
+    createDateFromValue(dateValue = null) {
+      if (dateValue === null || !this.isValidDateValue(dateValue)) return;
+      return new Date(Date.parse(dateValue));
+    },
+    isValidDateValue(value) {
+      const isStringOrNumber = typeof value === 'string' || typeof value === 'number' ? true : false;
+      const canBeParsed = !isNaN(Date.parse(value)) ? true : false;
+      return isStringOrNumber && canBeParsed //? true : false;
+    }
+
   }
 
   static array = {
