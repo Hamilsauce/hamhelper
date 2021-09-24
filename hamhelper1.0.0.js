@@ -9,6 +9,7 @@ export default class HamHelper {
     }
   }
 
+  /* @ DATE */
   static date = {
     createDateFromValue(dateValue = null) {
       if (dateValue === null || !this.isValidDateValue(dateValue)) return;
@@ -22,6 +23,7 @@ export default class HamHelper {
 
   }
 
+  /* @ ARRAY */
   static array = {
     zip(...arrs) {
       return arrs[0]
@@ -41,6 +43,16 @@ export default class HamHelper {
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
   // !!obj
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
+
+  // !!obj
+  static arrayFromObjectProperties(obj, propName = 'propertyName') {
+    const arr = Object.entries(obj)
+      .reduce((acc, [key, value]) => {
+        if (!acc[propName]) val[propName] = key;
+        return [...acc, { ...value }]
+      }, [])
+  }
+
 
   static event = {
     emit(source, action, config) {
@@ -162,7 +174,8 @@ HAM FUNCTIONS
 - isObjectEmpty(obj) { return Object.keys(obj).length === 0 };
 
 - mapFromObject(obj) { return new Map(Object.entries(obj)) };
-	
+
+- arrayFromObjectProperties(obj, propName = 'propertyName');
 	
     === HELP ===
 	
