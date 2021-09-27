@@ -48,7 +48,7 @@ export default class HamHelper {
   static arrayFromObjectProperties(obj, propName = 'propertyName') {
     const arr = Object.entries(obj)
       .reduce((acc, [key, value]) => {
-        if (!acc[propName]) val[propName] = key;
+        if (!acc[propName]) value[propName] = key;
         return [...acc, { ...value }]
       }, [])
   }
