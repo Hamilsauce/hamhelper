@@ -3,6 +3,8 @@
 const mapDelimiter = delimiter => {
   const del = delimiter.toLowerCase();
   let delim;
+  if (del === ',') return ','
+  
 
   if (del === 'tab') {
     delim = '\t';
