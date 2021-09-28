@@ -34,7 +34,7 @@ const convertToObjects = (colNames, dataBody, delim) => {
 }
 
 //* csvToJson: the module, provides interface/API layer for external use
-export default csvToJson = (input, delimiter = 'comma') => {
+export default (input, delimiter = 'comma') => {
   const csvToObjs = source => { //organizing function, maps API inputs with various function params
     let err = '';
     const delim = mapDelimiter(delimiter);
