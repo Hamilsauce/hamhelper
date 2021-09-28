@@ -1,6 +1,10 @@
-// Last updated: 9/15/21
+/* Last updated: 9/27/21 */
+import c2j from './modules/csvToJson.js';
+
 export default class HamHelper {
   constructor() {}
+
+  static csvToJson(csv) { return c2j(csv, ',') }
 
   // @Text
   static text = {
@@ -135,6 +139,8 @@ export default class HamHelper {
 HAM FUNCTIONS
 *******************
 *MESSAGE: ${msg}
+
+- csvToJson(csv) { return c2j(csv, ',') }
 
     === Text ===
     
