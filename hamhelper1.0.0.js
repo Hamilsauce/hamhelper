@@ -3,9 +3,7 @@ import c2j from './modules/csvToJson.js';
 import dom from './modules/DOM.js';
 
 export default class HamHelper {
-  constructor() {
-
-  }
+  // constructor() {}
 
   static csvToJson(csv) { return c2j(csv, ',') }
   static get DOM() { return dom }
