@@ -55,3 +55,4 @@ export default (input, delimiter = 'comma') => {
   return csvToObjs(input);
 }
 
+

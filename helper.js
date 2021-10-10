@@ -1,14 +1,18 @@
 import H from './hamhelper1.0.0.js'
-H.help()
+const { DOM, event, array } = H
+// import help from './modules/help.js';
+H.help.help()
+// H.help()
+// help.help()
 
-H.selectAllContent(document.querySelector('.log'))
+event.selectAllContent(document.querySelector('.log'))
 
 const scriptTag = document.createElement('script')
 const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 const newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 
 // console.log(scriptTag, newSvg.nodeName, newLine.nodeName);
-const output = H.DOM.qs('.output')
+const output = DOM.qs('.output')
 // console.log('creating newEl');
 const attributes = {
   id: 'my-el',
@@ -79,17 +83,17 @@ let arr5 = [
   }
 ];
 
-console.log('H.array.difference(arr4, arr5)', H.array.difference(arr4, arr5))
+// console.log('H.array.difference(arr4, arr5)', H.array.difference(arr4, arr5))
 
 
 console.log('H.array.zip(arr1,arr2, arr3)',
-  H.array.zip(arr1, arr2, arr3)
+  array.zip(arr1, arr2, arr3)
 )
 
 const els = arr1
   .map(tag => document.createElement(tag))
 
-console.log('els', els);
+// console.log('els', els);
 const chs = [
 	document.createElement('main'),
 	document.createElement('article'),
@@ -105,12 +109,12 @@ const cMap = [
 console.log(chs);
 
 
-const newb = H.DOM.newElement('div', attributes, els);
+const newb = DOM.newElement('div', attributes, els);
 
 console.log('newb', newb);
-H.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
+event.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
 
-H.DOM.qs('#app').appendChild(newb);
+DOM.qs('#app').appendChild(newb);
 
 
 

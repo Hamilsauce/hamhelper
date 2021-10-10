@@ -1,18 +1,18 @@
 export default {
+  // @queryselector
   qs(selector, parentEl = document) {
-    // @queryselector
     if (typeof selector === 'string') return parentEl.querySelector(selector);
     else console.error('error: selector must be string (in HamHelper.qs()).');
   },
 
+  // @querySelectorAll
   qsa(selector, parentEl = document) {
-    // @querySelectorAll
     if (typeof selector === 'string') return parentEl.querySelectorAll(selector);
     else console.error('error: selector must be string (in HamHelper.qsa()).');
   },
 
+  // @createElement
   newElement(tag = 'div', attrs = {}, children = [], template = '') {
-    // @createElement
     const el = document.createElement(tag);
     el.innerHTML = template;
 
@@ -29,15 +29,32 @@ export default {
     return el;
   },
 
+  // @removeAllChildren
   removeAllChildren(parent) {
-    // @removeAllChildren
     try { while (parent.firstChild) { parent.removeChild(parent.firstChild) } }
     catch (e) { console.error(`HAM ERROR: Unable to remove children from PARENT (${parent})`) }
   },
 
+  // @element  @dataset 
   setElementDataset(el, dataObj = {}) {
-    // @element  @dataset 
     if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
     else this.log('no data provided')
+  },
+
+  help() {
+    return `
+   === DOM ===
+
+- DOM.newElement(tag = 'div', attrs = {}, children = [], template = '');
+
+- DOM.qs(selector, parentEl = document);
+
+- DOM.qsa(selector, parentEl = document);
+
+- DOM.removeAllChildren(parent = element);
+
+- DOM.setElementDataset(el, dataObj = {});
+
+  `.trim();
   }
 }
