@@ -4,6 +4,20 @@ import date from './date.js';
 import DOM from './DOM.js';
 import event from './event.js';
 // import csvToJson from './modules/csvToJson.js';
+class Help {
+  constructor() {
+    const topicMap = new Map(
+      [
+        ['array', array.help()],
+        ['text', text.help()],
+        ['date', date.help()],
+        ['DOM', DOM.help()],
+        ['event', event.help()],
+      ]
+    )
+
+  }
+}
 const topicMap = new Map(
   [
     ['array', array.help()],
@@ -18,8 +32,8 @@ const topicMap = new Map(
 export default {
   help(msg = 'Leave a message such as where this call is located.', ...topics) {
     if (topics.length === 0) {
-      console.log(
-        `${msg}\n\n\n`,
+      console.info(
+        `MESSAGE: ${msg}\n\n\n`,
         [...topicMap.values()].join('\n\n\n')
       );
       return;

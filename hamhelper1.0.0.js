@@ -5,18 +5,19 @@ import date from './modules/date.js';
 import array from './modules/array.js';
 import text from './modules/text.js';
 import event from './modules/event.js';
-import help from './modules/help.js';
+import helpObj from './modules/help.js';
+import util from './modules/util.js';
 
 export default class HamHelper {
   // constructor() {}
 
-/* @ CSVTOJSON */
+  /* @ CSVTOJSON */
   static get csvToJson() { return c2j(csv, ',') }
- 
- /* @ DOM */
+
+  /* @ DOM */
   static get DOM() { return dom }
 
- /* @ TEXT */
+  /* @ TEXT */
   static get text() { return text }
 
   /* @ DATE */
@@ -24,12 +25,15 @@ export default class HamHelper {
 
   /* @ ARRAY */
   static get array() { return array }
- 
+
   /* @ EVENT */
-  static get event() {return event}
-  
+  static get event() { return event }
+
   /* @ HELP */
-  static get help() { return help }
+  static get help() {
+    const { help } = helpObj
+    return help
+  }
 
   /* @ MAP */
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
@@ -46,7 +50,23 @@ export default class HamHelper {
       }, [])
   }
 
+  getValueType(target, deepTest = false, customClassType = null) {
+    // TODO Work on params
+    if (target === null) return 'null';
+    if (typeof target === 'undefined') return 'undefined';
+    if (typeof target === 'object') {
+      if (target instanceof Array || Array.isArray(target)) return 'array';
+      if (target instanceof Date) return 'date';
+      if (target instanceof Map) return 'map';
+      if (target instanceof Set) return 'set';
+      else return 'object'
+    } else return typeof target;
+  }
+
 }
+
+
+
 
 function elt(name, attrs, ...children) {
   let dom = document.createElement(name);
