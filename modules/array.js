@@ -10,7 +10,7 @@ export default {
 
   zipIntoObject(arr1, arr2, comparer) {
     return arr1.reduce((obj, el, i) => {
-      return { ...obj, [i <= arr2.length ? arr1[i] : `COLUMN ${i} `]: arr2[i] }
+      return { ...obj, [i <= arr2.length ? arr1[i] : `COLUMN ${i}`]: arr2[i] }
     }, {});
   },
 
