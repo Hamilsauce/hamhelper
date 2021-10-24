@@ -62,10 +62,7 @@ export default class HamHelper {
       else return 'object'
     } else return typeof target;
   }
-
 }
-
-
 
 
 function elt(name, attrs, ...children) {

@@ -8,6 +8,12 @@ export default {
       }, []);
   },
 
+  zipIntoObject(arr1, arr2, comparer) {
+    return arr1.reduce((obj, el, i) => {
+      return { ...obj, [i <= arr2.length ? art1[i] : `COLUMN ${i} `]: arr2[i] }
+    }, {});
+  },
+
   difference(arr1, arr2, comparer) { return arr1.filter(arr1El => !arr2.includes(arr1El)) },
   intersection(arr1, arr2, comparer) { return arr1.filter(arr1El => arr2.includes(arr1El)) },
   union(arr1, arr2, comparer) { return [...new Set([...arr1, ...arr2])] },
@@ -20,6 +26,7 @@ export default {
       === Array ===
   
 - zip(...arrs); 
+- zipIntoObject(arr1, arr2, comparer);
 - difference(arr1, arr2, comparer); 
 - intersection(arr1, arr2, comparer); 
 - union(arr1, arr2, comparer);

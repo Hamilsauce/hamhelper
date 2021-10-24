@@ -1,7 +1,4 @@
 export default {
-  capitalize([first, ...rest]) {
-    if (typeof first === 'string') return `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
-  },
 
   getValueType(target, deepTest = false, customClassType = null) {
     // TODO Work on params
@@ -38,11 +35,12 @@ export default {
 
   help() {
     return `
-    === Text ===
+    === Util ===
     
-- capitalizeText([first, ...rest]);
 - shuffle(a = '' || []);
+
 - uuid();
+
 - getValueType(target, deepTest = false, customClassType = null)
   `.trim();
   }
