@@ -28,6 +28,9 @@ export default class HamHelper {
 
   /* @ EVENT */
   static get event() { return event }
+ 
+  /* @ UTIL */
+  static get utils() { return util }
 
   /* @ HELP */
   static get help() {

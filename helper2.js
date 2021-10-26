@@ -1,9 +1,9 @@
 import H from './hamhelper1.0.0.js'
 import rx from './modules/rxjs.js'
 
-const { date, array } = H;
+const { date, array, utils } = H;
 // console.log({})
-
+console.log('utils.getValueType(5)', utils.getValueType(5))
 // const { DOM, event, array, help, text } = H
 // const { DOM, event, array, help, text } = H
 // import help from './modules/help.js';
