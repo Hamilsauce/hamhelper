@@ -1,6 +1,6 @@
-import util from './modules/util.js'
+import utils from './modules/utils.js'
 import ham from './hamhelper1.0.0.js'
-const { getValueType } = util;
+const { getValueType } = utils;
 const { help } = ham;
 
 class InclusionConfig {

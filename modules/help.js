@@ -3,8 +3,9 @@ import text from './text.js';
 import date from './date.js';
 import DOM from './DOM.js';
 import event from './event.js';
-import util from './util.js';
-// import csvToJson from './modules/csvToJson.js';
+import utils from './utils.js';
+// import csvToJson from './utils.js';
+import csvToJson from './modules/csvToJson.js';
 class Help {
   constructor() {
     const topicMap = new Map(
@@ -14,7 +15,8 @@ class Help {
         ['date', date.help()],
         ['DOM', DOM.help()],
         ['event', event.help()],
-        ['util', util.help()],
+        ['utils', utils.help()],
+        ['csvToJson', csvToJson.help()],
       ]
     )
 
@@ -27,7 +29,8 @@ const topicMap = new Map(
     ['date', date.help()],
     ['DOM', DOM.help()],
     ['event', event.help()],
-    ['util', util.help()],
+    ['utils', utils.help()],
+    ['csvToJson', csvToJson.help()],
   ]
 )
 

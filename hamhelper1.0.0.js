@@ -6,7 +6,7 @@ import array from './modules/array.js';
 import text from './modules/text.js';
 import event from './modules/event.js';
 import helpObj from './modules/help.js';
-import util from './modules/util.js';
+import utils from './modules/utils.js';
 
 export default class HamHelper {
   // constructor() {}
@@ -30,7 +30,7 @@ export default class HamHelper {
   static get event() { return event }
  
   /* @ UTIL */
-  static get utils() { return util }
+  static get utils() { return utils }
 
   /* @ HELP */
   static get help() {

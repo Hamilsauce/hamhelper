@@ -4,7 +4,7 @@ const mapDelimiter = delimiter => {
   const del = delimiter.toLowerCase();
   let delim;
   if (del === ',') return ','
-  
+
 
   if (del === 'tab') {
     delim = '\t';
@@ -36,7 +36,7 @@ const convertToObjects = (colNames, dataBody, delim) => {
 }
 
 //* csvToJson: the module, provides interface/API layer for external use
-export default (input, delimiter = 'comma') => {
+export const csvToJson(input, delimiter = 'comma') => {
   const csvToObjs = source => { //organizing function, maps API inputs with various function params
     let err = '';
     const delim = mapDelimiter(delimiter);
@@ -55,4 +55,41 @@ export default (input, delimiter = 'comma') => {
   return csvToObjs(input);
 }
 
+export default {
 
+  csvToJson(input, delimiter = 'comma') {
+    const csvToObjs = source => { //organizing function, maps API inputs with various function params
+      let err = '';
+      const delim = mapDelimiter(delimiter);
+
+      if (delim === -1) {
+        err = 'Error: invalid delimiter provided.';
+        console.error(err);
+        return err;
+      } else {
+        let dataBody = source.split('\n');
+        const colNames = dataBody.shift().trim().split(delim);
+
+        return convertToObjects(colNames, dataBody, delim);
+      }
+    }
+    
+    
+    return csvToObjs(input);
+  },
+  
+    getColumns(csv) {
+      return 'csv'.substring(0, 'csv'.indexOf('\n')).trim().split(',')
+    },
+  
+
+  help(method = null) {
+    return `
+      
+        === CSV TO JSON ===
+    
+  - getColumnNames(csv) => string[]
+  - csvToJson(input, delimiter = 'comma') => json
+      `.trim();
+  }
+}
