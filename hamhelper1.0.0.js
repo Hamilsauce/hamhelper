@@ -1,12 +1,12 @@
 /* Last updated: 10/1/21 */
-import c2j from './modules/csvToJson.js';
 import dom from './modules/DOM.js';
 import date from './modules/date.js';
 import array from './modules/array.js';
-import text from './modules/text.js';
+import text from './modules/text.js';// <<< ERROR
 import event from './modules/event.js';
 import helpObj from './modules/help.js';
 import utils from './modules/utils.js';
+import c2j from './modules/csvToJson.js';
 
 export default class HamHelper {
   // constructor() {}
@@ -17,7 +17,7 @@ export default class HamHelper {
   /* @ DOM */
   static get DOM() { return dom }
 
-  /* @ TEXT */
+  /* TODO ERROR    @ TEXT */
   static get text() { return text }
 
   /* @ DATE */
@@ -28,18 +28,42 @@ export default class HamHelper {
 
   /* @ EVENT */
   static get event() { return event }
- 
+
   /* @ UTIL */
   static get utils() { return utils }
 
   /* @ HELP */
   static get help() {
-    const { help } = helpObj
-    return help
+    const { help } = helpObj;
+    return help;
   }
 
   /* @ MAP */
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
+
+  /* @ ASYNC */
+  static async asyncFetchMap(sources) {
+    console.log(sources);
+    return await Promise.all(
+      sources.map(async ({ name, url }, i) => {
+        const response = await fetch(url);
+        return { key: name, data: await response.json() }
+      }))
+  };
+
+
+  /* @ ASYNC */
+  static async asyncReduce({ collectionName, sources }) {
+    return (await fetchCollectionSources(sources))
+      .reduce((acc, { key, data }, i) => {
+        acc.get(collectionName).set(
+          key,
+          new Map([[key, [...Object.entries({ ...data })]]])
+        );
+        return acc;
+      }, new Map([[collectionName, new Map()]]));
+  };
+
 
   /* @ OBJECT */
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }

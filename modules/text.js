@@ -9,7 +9,6 @@ export default {
     const criteria = ['array', 'string', 'number'].includes(getValueType(chars[0])) ? getValueType(chars[0]) : null;
     if (!(text && chars) || criteria === null) return;
 
-
     const typeMap = new Map(
       [
         ['string', (v) => v],
@@ -18,14 +17,14 @@ export default {
         ['string', (v) => v],
       ]
     )
-    switch (criteria) {
-      case 'array': {
-        return text.replace(chars[0]
-      }
+    // switch (criteria) {
+    //   case 'array': {
+    //     return text.replace(chars[0])
+    //   }
 
-      break;
+    //   break;
 
-    }
+    // }
 
 
     if (getValueType(chars)) {

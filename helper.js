@@ -1,7 +1,7 @@
 import H from './hamhelper1.0.0.js'
 const { DOM, event, array, help } = H
 // import help from './modules/help.js';
-help('in helperjs line 4')
+// help('in helperjs line 4')
 // H.help()
 // help.help()
 
