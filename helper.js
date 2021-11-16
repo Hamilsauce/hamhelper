@@ -3,7 +3,8 @@ const { DOM, event, array, help } = H
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
-// help.help()
+help('sux')
+console.log('poop');
 
 event.selectAllContent(document.querySelector('.log'))
 

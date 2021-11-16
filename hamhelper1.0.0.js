@@ -35,6 +35,9 @@ export default class HamHelper {
   /* @ HELP */
   static get help() {
     const { help } = helpObj;
+    
+    // console.log({help});
+    
     return help;
   }
 

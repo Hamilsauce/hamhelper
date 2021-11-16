@@ -1,9 +1,11 @@
 import H from './hamhelper1.0.0.js'
 // import H from './hamhelper1.0.0.js'
 // import rx from './modules/rxjs.js'
-console.log('H.help()')
+// console.log('H.help()', H.help())
 
-const { date, array, utils, text } = H;
+const { date, array, utils, text , help} = H;
+
+console.log({help});
 // const src = `
 // Build Dictionaries From Objects
 // Dictionaries are data structures with key - value pairs.
