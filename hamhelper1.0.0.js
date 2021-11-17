@@ -1,12 +1,25 @@
-/* Last updated: 10/1/21 */
-import dom from './modules/DOM.js';
-import date from './modules/date.js';
-import array from './modules/array.js';
-import text from './modules/text.js';// <<< ERROR
-import event from './modules/event.js';
-import helpObj from './modules/help.js';
-import utils from './modules/utils.js';
-import c2j from './modules/csvToJson.js';
+/* Last updated: 11/17/21 */
+// import dom from './modules/DOM.js';
+// import date from './modules/date.js';
+// import array from './modules/array.js';
+// import text from './modules/text.js'; // <<< ERROR
+// import event from './modules/event.js';
+// import helpObj from './modules/help.js';
+// import utils from './modules/utils.js';
+// import c2j from './modules/csvToJson.js';
+// import pipe from './modules/pipeline.js';
+import
+{
+  dom,
+  date,
+  array,
+  text,
+  event,
+  helpObj,
+  utils,
+  c2j,
+  pipe,
+} from './modules/index.js';
 
 export default class HamHelper {
   // constructor() {}
@@ -35,10 +48,11 @@ export default class HamHelper {
   /* @ HELP */
   static get help() {
     const { help } = helpObj;
-    
-    // console.log({help});
-    
     return help;
+  }
+  /* @ PIPE */
+  static get pipeline() {
+    return pipe;
   }
 
   /* @ MAP */

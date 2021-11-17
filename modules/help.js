@@ -11,6 +11,7 @@ import shortcuts from './shortcuts.js';
 
 const topicMap = new Map(
   [
+    ['pipeline', 'pipeline(...functions) => initialValue =>'],
     ['array', array.help()],
     ['text', text.help()],
     ['date', date.help()],
@@ -18,7 +19,7 @@ const topicMap = new Map(
     ['event', event.help()],
     ['utils', utils.help()],
     ['csvToJson', csvToJson.help()],
-    ['shortcuts', shortcuts.help()]
+    ['shortcuts', shortcuts.help()],
   ]
 );
 
