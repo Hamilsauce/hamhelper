@@ -5,7 +5,7 @@ import H from './hamhelper1.0.0.js'
 
 const { date, array, utils, pipeline, text, help } = H;
 
-help()
+help('', 'DOM', 'text')
 
 // const am = pipeline(0,
 //   (num) => num + 50,

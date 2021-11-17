@@ -24,23 +24,19 @@ const topicMap = new Map(
 );
 
 export default {
-  
+
   help(msg = 'Leave a message such as where this call is located.', ...topics) {
-    
-    if (topics.size !== 0) {
+    if (topics.length === 0) {
       console.info(
         `MESSAGE: ${msg}\n\n\n`,
         [...topicMap.values()].join('\n\n\n')
       );
-      return;
-    };
-
-    // console.log(
-    //   `${msg}`,
-    //   topics
-    //     .reduce((output, topic, i) => {
-    //       return [...output, topicMap.get(topic)]
-    //   }, '').join('\n\n\n')
-    // )
+    } else {
+      console.info(
+        `MESSAGE: ${msg}\n`,
+        topics.reduce((acc, curr, i) => `${acc}\n\n${topicMap.get(curr)}`, '')
+      );
+    }
+    return;
   }
 }
