@@ -3,20 +3,24 @@ import H from './hamhelper1.0.0.js'
 // import rx from './modules/rxjs.js'
 // console.log('H.help()', H.help())
 
-const { date, array, utils, pipeline, text, help } = H;
+const { event, date, array, utils, pipeline, text, help } = H;
 
 help('', 'DOM', 'text')
+const app = document.querySelector('#app');
+const targ = document.querySelectorAll('.targ')
+const footer = document.querySelector('.container')
 
-// const am = pipeline(0,
-//   (num) => num + 50,
-//   (num) => num * 2,
-// );
-const am2 = pipeline(
-  (num) => num + 50,
-  (num) => num * 2,
+app.addEventListener('click', e => {
+const res = event.testEventPathForElement(e, targ)
+  console.log('res', res)
+})
+
+
+const numToTextPipe = pipeline(
+  (num = 0) => num + 50,
+  (num = 1) => num * 2,
+  (num = '') => `Number ${num} is big time!`
 );
 
-
-
-// console.log('am', am)
-console.log('am', am2(0))
+console.log('am', numToTextPipe(0))
+// => 'Number 100 is big time!'

@@ -27,6 +27,17 @@ export default {
     el.addEventListener('touchend', e => { clearTimeout(window.hamLongPressTimer) })
   },
 
+  isHandleEventSource(e) {
+    return e.path.some(el => el.id === 'drawer-handle')
+  },
+  testEventPathForElement(evt, element) {
+    return evt.path.some(el => {
+    console.log('evt.path.some(el => el == element)', evt.path.some(el => el == element))
+    // console.log('evt.path',  el.classList.length > 0 && el.classList.contains('app'))
+      // el.classList ? el.classList.contains('targ') ? `has clist, ${el} n matches` : `has clist, ${el} and no match` : 'no c lidt'
+    return evt.path.some(el => el == element)
+    })
+  },
 
   help() {
     return `

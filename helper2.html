@@ -2,33 +2,57 @@
 <html>
 
 <head>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js' integrity='sha512-y3JTS47nnpKORJX8Jn1Rlm+QgRIIZHtu3hWxal0e81avPrqUH48yk+aCi+gprT0RMAcpYa0WCkapxe+bpBHD6g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
-  
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js' integrity='sha512-y3JTS47nnpKORJX8Jn1Rlm+QgRIIZHtu3hWxal0e81avPrqUH48yk+aCi+gprT0RMAcpYa0WCkapxe+bpBHD6g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css" media="all">
+    .app {
+      width: 100%;
+      height: 100%;
+      min-width: 100vw;
+      min-height: 100vh;
+      background: #478E84;
+    }
+
+    .container {
+      width: 300px;
+      height: 300px;
+      background: #B55048;
+    }
+
+    .targ {
+      width: 100px;
+      height: 100px;
+      background: #D7D7D7;
+    }
+  </style>
 </head>
 
 <body>
-	<div id="app">
-		<div class="log">
-		  op
-		</div>
-		<div class="output">
-		</div>
-	</div>
-	<!-- <script src="hamhelper.js" type="module"></script> -->
-	<!-- <script src="scratch.js" type="module"></script> -->
-	<!-- <script src="0-TODO-TestForInclusion.js" type="module"></script> -->
-	<!-- <script async="true" src="helper2.js" type="module"></script> -->
-		<script async="true" src="helper2.js" type="module"></script>
-
-	<!-- <script type="module">
+  <div id="app" class="app">
+    <div class="container">
+      <div class="targ">TARG
+      </div>
+    </div>
+    <div class="log">
+      op
+    </div>
+    <div class="output">
+    </div>
+  </div>
+  <!-- <script src="hamhelper.js" type="module"></script> -->
+  <!-- <script src="scratch.js" type="module"></script> -->
+  <!-- <script src="0-TODO-TestForInclusion.js" type="module"></script> -->
+  <!-- <script async="true" src="helper2.js" type="module"></script> -->
+  <script async="true" src="helper2.js" type="module"></script>
+  <!-- <script type="module">
 	 import {testForInclusion} from './0-TODO-TestForInclusion.js'
 	  const arr = [1, '2', 1, [3, '4', ['nested arr lvl 2'], {name: 'nested obj'}], {name: 'obj'}]
 	  console.log('TestForInclusion(arr, {name: obj})', testForInclusion(arr[3][3], 'name'))
 	console.log('arr[3][2][1], name))', arr[3][3])
 	</script> -->
-	<!-- <script src="samples.js" type="text/javascript" charset="utf-8"></script> -->
+  <!-- <script src="samples.js" type="text/javascript" charset="utf-8"></script> -->
 </body>
+
 </html>
