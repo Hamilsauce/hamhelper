@@ -6,12 +6,15 @@ import event from './event.js';
 import utils from './utils.js';
 import csvToJson from './csvToJson.js';
 import shortcuts from './shortcuts.js';
+import TwoWayMap from './TwoWayMap.js';
+import * as pipeline from './pipeline.js';
 
 /* USE CONSOLE.LOG({item})  */
-
+console.log(TwoWayMap);
 const topicMap = new Map(
   [
-    ['pipeline', 'pipeline(...functions) => initialValue =>'],
+    ['TwoWayMap', TwoWayMap.help()],
+    ['pipeline', pipeline.pipelineHelp()],
     ['array', array.help()],
     ['text', text.help()],
     ['date', date.help()],

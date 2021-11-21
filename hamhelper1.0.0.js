@@ -1,13 +1,5 @@
-/* Last updated: 11/17/21 */
-// import dom from './modules/DOM.js';
-// import date from './modules/date.js';
-// import array from './modules/array.js';
-// import text from './modules/text.js'; // <<< ERROR
-// import event from './modules/event.js';
-// import helpObj from './modules/help.js';
-// import utils from './modules/utils.js';
-// import c2j from './modules/csvToJson.js';
-// import pipe from './modules/pipeline.js';
+/* Last updated: 11/21/21 */
+
 import
 {
   dom,
@@ -19,10 +11,20 @@ import
   utils,
   c2j,
   pipe,
+  twoWayMap,
 } from './modules/index.js';
 
 export default class HamHelper {
   // constructor() {}
+
+  /* @ PIPELINE */
+  static get pipeline() {
+    // const { help } = helpObj;
+     return pipe
+  }
+
+  /* @ TwoWayMap */
+  static get TwoWayMap() { return twoWayMap }
 
   /* @ CSVTOJSON */
   static get csvToJson() { return c2j(csv, ',') }
@@ -49,10 +51,6 @@ export default class HamHelper {
   static get help() {
     const { help } = helpObj;
     return help;
-  }
-  /* @ PIPE */
-  static get pipeline() {
-    return pipe;
   }
 
   /* @ MAP */

@@ -1,5 +1,6 @@
+// import { TwoWayMap } from './modules/TwoWayMap.js';
 import H from './hamhelper1.0.0.js'
-const { DOM, event, array, help } = H
+const { TwoWayMap, DOM, event, array, help } = H
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
@@ -32,9 +33,18 @@ const attributes = {
   }
 };
 
+const o1 = {
+  o: 'o1'
+}
+const o2 = {
+  o: 'o2'
+}
+
 let arr1 = ['main', 'article', 'div', 'p'];
-let arr2 = [1, 2, 3, 4];
-let arr3 = [true, false, true, true];
+// let arr2 = [1, 1,2, 3, 4];
+// let arr3 = [o1, 'o1',o2, {o: 'o3'}, o1];
+let arr2 = [1, 2];
+let arr3 = [o1, o1];
 
 
 let arr4 = [
@@ -85,10 +95,10 @@ let arr5 = [
 ];
 
 // console.log('H.array.difference(arr4, arr5)', H.array.difference(arr4, arr5))
+const twMap = new TwoWayMap(array.zip(arr2, arr3))
 
-
-console.log('H.array.zip(arr1,arr2, arr3)',
-  array.zip(arr1, arr2, arr3)
+console.log('TwoWayMap(array.zip(arr2, arr3))',
+  [...twMap]
 )
 
 const els = arr1

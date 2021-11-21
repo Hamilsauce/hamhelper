@@ -6,4 +6,5 @@ export { default as event } from './event.js';
 export { default as helpObj } from './help.js';
 export { default as utils } from './utils.js';
 export { default as c2j } from './csvToJson.js';
-export { default as pipe } from './pipeline.js';
+export { pipe, pipelineHelp } from './pipeline.js';
+export { default as twoWayMap } from './TwoWayMap.js';
