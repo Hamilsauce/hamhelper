@@ -6,7 +6,7 @@ import H from './hamhelper1.0.0.js'
 
 const { TwoWayMap,event, date, array, utils, pipeline, text, help } = H;
 console.log({pipeline});
-help('', 'DOM', 'text')
+help()
 const app = document.querySelector('#app');
 const targ = document.querySelectorAll('.targ')
 const footer = document.querySelector('.container')

@@ -31,7 +31,8 @@ export default {
   help(msg = 'Leave a message such as where this call is located.', ...topics) {
     if (topics.length === 0) {
       console.info(
-        `MESSAGE: ${msg}\n\n\n`,
+        `import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
+        MESSAGE: ${msg}\n\n\n`,
         [...topicMap.values()].join('\n\n\n')
       );
     } else {
