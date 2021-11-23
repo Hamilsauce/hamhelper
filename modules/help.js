@@ -10,7 +10,7 @@ import TwoWayMap from './TwoWayMap.js';
 import * as pipeline from './pipeline.js';
 
 /* USE CONSOLE.LOG({item})  */
-console.log(TwoWayMap);
+
 const topicMap = new Map(
   [
     ['TwoWayMap', TwoWayMap.help()],

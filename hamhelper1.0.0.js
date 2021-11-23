@@ -27,7 +27,7 @@ export default class HamHelper {
   static get TwoWayMap() { return twoWayMap }
 
   /* @ CSVTOJSON */
-  static get csvToJson() { return c2j(csv, ',') }
+  static get csvToJson() { return c2j }
 
   /* @ DOM */
   static get DOM() { return dom }

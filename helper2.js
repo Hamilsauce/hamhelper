@@ -1,3 +1,5 @@
+console.time('timer1')
+
 import H from './hamhelper1.0.0.js'
 // import { pipe } from './modules/pipeline.js';
 // import { TwoWayMap } from './modules/TwoWayMap.js';
@@ -6,7 +8,11 @@ import H from './hamhelper1.0.0.js'
 
 const { TwoWayMap,event, date, array, utils, pipeline, text, help } = H;
 console.log({pipeline});
-help()
+
+
+console.group(new TwoWayMap([[1, '1']]));
+console.table(new TwoWayMap([[1, '1']]));
+console.dir(new TwoWayMap([[1, '1']]));
 const app = document.querySelector('#app');
 const targ = document.querySelectorAll('.targ')
 const footer = document.querySelector('.container')
@@ -27,3 +33,4 @@ console.log('am', numToTextPipe(0))
 // => 'Number 100 is big time!'
 
 console.log(Object.fromEntries([['fart', ['fart']]]));
+console.timeEnd('timer1')
