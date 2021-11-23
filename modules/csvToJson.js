@@ -26,7 +26,7 @@ const convertToObjects = (colNames, dataBody, delim) => {
 
       const recordObj = row.split(delim)
         .reduce((record, recordFields) => {
-          record[colNames[i]] = recordFields;
+          record[colNames[i]] = !recordFields ? null : recordFields;
           ++i;
           return record;
         }, {});
