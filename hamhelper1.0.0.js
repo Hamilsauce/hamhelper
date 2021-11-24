@@ -58,7 +58,7 @@ export default class HamHelper {
 
   /* @ ASYNC */
   static async asyncFetchMap(sources) {
-    console.log(sources);
+    // console.log(sources);
     return await Promise.all(
       sources.map(async ({ name, url }, i) => {
         const response = await fetch(url);

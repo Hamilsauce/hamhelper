@@ -4,8 +4,8 @@ const { TwoWayMap, DOM, event, array, help } = H
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
-help('sux')
-console.log('poop');
+// help('sux')
+// console.log('poop');
 
 event.selectAllContent(document.querySelector('.log'))
 
@@ -97,9 +97,9 @@ let arr5 = [
 // console.log('H.array.difference(arr4, arr5)', H.array.difference(arr4, arr5))
 const twMap = new TwoWayMap(array.zip(arr2, arr3))
 
-console.log('TwoWayMap(array.zip(arr2, arr3))',
-  [...twMap]
-)
+// console.log('TwoWayMap(array.zip(arr2, arr3))',
+  // [...twMap]
+// )
 
 const els = arr1
   .map(tag => document.createElement(tag))
