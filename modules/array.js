@@ -19,7 +19,7 @@ export default {
   },
 
   groupBy() {},
-  distinctValues(arr) {return Array.isArray(arr) ? [...new Set(arr)] : []},
+  distinctValues(arr) {return Array.isArray(arr) ? [...new Set(arr)] : ['err']},
 
   difference(arr1, arr2, comparer) { return arr1.filter(arr1El => !arr2.includes(arr1El)) },
   intersection(arr1, arr2, comparer) { return arr1.filter(arr1El => arr2.includes(arr1El)) },
