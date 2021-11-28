@@ -1,8 +1,33 @@
 import utils from './utils.js'
 const { getValueType } = utils;
 export default {
-  capitalize([first, ...rest]) {
-    if (typeof first === 'string') return `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
+  capitalize(text) {
+    if (typeof text === 'string') return `${text.slice(0,1).toUpperCase()}${text.slice(1).toLowerCase()}`
+  },
+
+  camelToKebab(text) {
+    if (typeof text === 'string') return [...text.normalize()].reduce((result, letter, i) => `${result}${letter.match(/[A-Z]/g) && i !== 0 ? `-${letter}` : letter}`.toLowerCase(), '');
+  },
+
+  kebabToCamel(text, capitalizeFirst = false) {
+    let lastLetterDash = false;
+    if (typeof text === 'string')
+      return [...text.normalize()]
+        .reduce((result, letter, i, arr) => {
+          // if (lastLetterDash) {
+          //   return result;
+          // }
+          if (letter.match(/-/g) && arr[i + 1] !== '-') {
+            lastLetterDash = true;
+            letter = arr[i + 1].toUpperCase()
+          } else if (!letter.match(/-/g) && !lastLetterDash) {
+            lastLetterDash = false;
+            letter = arr[i] //.toLowerCase()
+          }
+
+          return `${result}${letter}`
+          // `${result}${letter.match(/-/g) && arr[i + 1] !== '-' ?  arr[i + 1].toUpperCase()    : letter.match(/[A-Z]/g) ? letter : letter}`
+        }, '');
   },
 
   replaceMany(text, ...chars) {
@@ -57,7 +82,10 @@ export default {
     return `
     === Text ===
     
-- capitalizeText([first, ...rest]);
+- capitalize(text); 
+- camelToKebab(text); 
+- kebabToCamel(text); 
+
 
 - textBetween(text = '', startChar = '', endChar = '', every = false);
   `.trim();

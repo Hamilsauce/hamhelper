@@ -12,17 +12,18 @@ import
   c2j,
   pipe,
   twoWayMap,
+  json,
 } from './modules/index.js';
 
 export default class HamHelper {
   // constructor() {}
 
   /* @ PIPELINE */
-  static get pipeline() {
-    // const { help } = helpObj;
-     return pipe
-  }
+  static get pipeline() {return pipe}
 
+  /* @ JSON */
+  static get json() {return json}
+ 
   /* @ TwoWayMap */
   static get TwoWayMap() { return twoWayMap }
 

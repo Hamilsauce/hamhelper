@@ -7,12 +7,14 @@ import utils from './utils.js';
 import csvToJson from './csvToJson.js';
 import shortcuts from './shortcuts.js';
 import TwoWayMap from './TwoWayMap.js';
+import json from './json.js';
 import * as pipeline from './pipeline.js';
 
 /* USE CONSOLE.LOG({item})  */
 
 const topicMap = new Map(
   [
+    ['json', json.help()],
     ['TwoWayMap', TwoWayMap.help()],
     ['pipeline', pipeline.pipelineHelp()],
     ['array', array.help()],

@@ -9,6 +9,10 @@ import H from './hamhelper1.0.0.js'
 const { TwoWayMap, event, date, array, utils, pipeline, text, help } = H;
 console.log({ pipeline });
 
+const poop = 'kebab-case'
+// console.log('poop.split(/^[A-Z]*$/)', poop.split(/[A-Z]/g)) 
+console.log('camelToKebab',text.camelToKebab(poop));
+console.log('kebabToCamel',text.kebabToCamel(poop));
 
 console.group(new TwoWayMap([[1, '1']]));
 console.table(new TwoWayMap([[1, '1']]));
@@ -23,7 +27,7 @@ app.addEventListener('click', e => {
 })
 
 
-const numToTextPipe =  pipeline(
+const numToTextPipe = pipeline(
     (num) => num + 50,
     (num) => num * 2,
     (num) => `Number ${num} is big time!`
