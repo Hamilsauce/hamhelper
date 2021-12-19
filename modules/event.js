@@ -30,6 +30,7 @@ export default {
   isHandleEventSource(e) {
     return e.path.some(el => el.id === 'drawer-handle')
   },
+  
   testEventPathForElement(evt, element) {
     return evt.path.some(el => {
     console.log('evt.path.some(el => el == element)', evt.path.some(el => el == element))

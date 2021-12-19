@@ -1,9 +1,8 @@
 export const pipe = (...functions) =>
-  (initialValue) => functions
-    .reduce(
-      (acc, fn) => fn(acc),
-      initialValue
-    );
+  (initialValue) => functions.reduce(
+    (acc, fn) => fn(acc),
+    initialValue
+  );
 
 
 export const pipelineHelp = () => {

@@ -1,7 +1,9 @@
+//HAM Element
+// TODO
 export default class extends Map {
   constructor(entries) {
     super(entries);
-    
+
     if (Array.isArray(entries))
       entries.forEach(([key, value]) => {
         super.set(value, key)
@@ -10,7 +12,6 @@ export default class extends Map {
   set(key, value) {
     super.set(key, value);
     super.set(value, key);
-    return this;
   }
   static help() {
     return `

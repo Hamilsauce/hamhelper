@@ -11,8 +11,8 @@ console.log({ pipeline });
 
 const poop = 'kebab-case'
 // console.log('poop.split(/^[A-Z]*$/)', poop.split(/[A-Z]/g)) 
-console.log('camelToKebab',text.camelToKebab(poop));
-console.log('kebabToCamel',text.kebabToCamel(poop));
+console.log('camelToKebab', text.camelToKebab(poop));
+console.log('kebabToCamel', text.kebabToCamel(poop));
 
 console.group(new TwoWayMap([[1, '1']]));
 console.table(new TwoWayMap([[1, '1']]));
@@ -28,10 +28,10 @@ app.addEventListener('click', e => {
 
 
 const numToTextPipe = pipeline(
-    (num) => num + 50,
-    (num) => num * 2,
-    (num) => `Number ${num} is big time!`
-  );
+  (num) => num + 50,
+  (num) => num * 2,
+  (num) => `Number ${num} is big time!`
+);
 
 console.log('am', numToTextPipe(0))
 // => 'Number 100 is big time!'
@@ -41,3 +41,21 @@ console.log('am', numToTextPipe(0))
 
 console.log(Object.fromEntries([['fart', ['fart']]]));
 console.timeEnd('timer1')
+
+
+const freq = (arr) => {
+  // const map = new Map()
+  const freqMap = arr.reduce((map, curr, i) => {
+
+    if (map.has(curr)) {
+      map.set(curr, map.get(curr)++)
+    } else {
+      map.set(curr, 1)
+      
+    }
+  }, new Map());
+}
+const seed = [
+'5', 
+
+]
