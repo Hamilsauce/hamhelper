@@ -19,11 +19,21 @@ export default class HamHelper {
   // constructor() {}
 
   /* @ PIPELINE */
-  static get pipeline() {return pipe}
+  static get pipeline() { return pipe }
+
+  /* @ PIPELINE */
+  static get CONSTANTS() {
+    return {
+      ALPHABET: (
+        new Array('Z'.charCodeAt() - 'A'.charCodeAt() + 1)
+        .fill(0).map((v, i) => ('A'.charCodeAt() + 1) + i)
+      ).map(x => String.fromCharCode(x)),
+    }
+  }
 
   /* @ JSON */
-  static get json() {return json}
- 
+  static get json() { return json }
+
   /* @ TwoWayMap */
   static get TwoWayMap() { return twoWayMap }
 

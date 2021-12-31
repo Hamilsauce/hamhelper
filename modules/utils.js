@@ -1,5 +1,6 @@
 export default {
 
+
   getValueType(target, deepTest = false, customClassType = null) {
     // TODO Work on params
     if (target === null) return 'null';
@@ -14,6 +15,7 @@ export default {
   },
 
   uuid() { return shuffle(shuffle(Date.now().toString(36)) + shuffle(Math.random().toString(36).substr(2))) },
+
 
   shuffle(a = '' || []) {
     if (typeof a === 'string') {

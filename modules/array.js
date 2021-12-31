@@ -14,6 +14,8 @@ export default {
     }, {});
   },
 
+  range(start, stop) { new Array(stop, start).fill(0).map((v, i) => start + i) },
+
 
   multiFilter(array = [], ...criteria) {},
 
@@ -28,7 +30,7 @@ export default {
       ).json()).specialties.map((x, i) => typeof x === 'string' ? x.toUpperCase() : x)
     )
   },
-  
+
   difference(arr1, arr2, comparer) { return arr1.filter(arr1El => !arr2.includes(arr1El)) },
   intersection(arr1, arr2, comparer) { return arr1.filter(arr1El => arr2.includes(arr1El)) },
   union(arr1, arr2, comparer) { return [...new Set([...arr1, ...arr2])] },
