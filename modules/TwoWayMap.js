@@ -7,11 +7,13 @@ export default class extends Map {
         super.set(value, key)
       });
   }
+  
   set(key, value) {
     super.set(key, value);
     super.set(value, key);
     return this;
   }
+  
   static help() {
     return `
       === TwoWayMap ===

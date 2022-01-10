@@ -3,15 +3,15 @@
 
 export default {
   createDateFromValue(dateValue = null) {
-    if (dateValue === null || !this.isValidDateValue(dateValue)) return;
+    if (dateValue === null || !isValidDateValue(dateValue)) return;
     return new Date(Date.parse(dateValue));
   },
 
   isValidDateValue(value) {
-   return !isNaN(Date.parse(value)) ? true : false && testForInclusion(['string', 'number'],typeof value);
-    // const isStringOrNumber = typeof value === 'string' || typeof value === 'number' ? true : false;
-    // const canBeParsed = !isNaN(Date.parse(value)) ? true : false;
-    // return isStringOrNumber && canBeParsed //? true : false;
+  // return !isNaN(Date.parse(value)) ? true : false && testForInclusion(['string', 'number'],typeof value);
+    const isStringOrNumber = typeof value === 'string' || typeof value === 'number' ? true : false;
+    const canBeParsed = !isNaN(Date.parse(value)) ? true : false;
+    return isStringOrNumber && canBeParsed //? true : false;
   },
 
   help() {
