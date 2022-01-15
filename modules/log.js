@@ -1,8 +1,14 @@
 export default {
-  logInterval(msg = '', interval = 2000, input) {
+  interval(msg = '', interval = 2000, input) {
     setInterval(() => {
-      console.log(msg, input)
+      console.log(msg, input ? input : 'No value being logged.')
     }, interval)
+  },
+
+  timeout(msg = '', time = 1000, input) {
+    setTimeout(() => {
+      console.log(msg, input ? input : 'No value being logged.')
+    }, time)
   },
 
 
@@ -10,8 +16,8 @@ export default {
     return `
     
       === Log ===
-
-- logInterval(msg, interval, input)
+- interval(msg = '', interval = 1000, input)
+- timeout(msg = '', time = 1000, input)
     `.trim();
   }
 }
