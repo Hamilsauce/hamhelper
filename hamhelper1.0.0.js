@@ -13,6 +13,7 @@ import
   pipe,
   twoWayMap,
   json,
+  log,
 } from './modules/index.js';
 
 export default class HamHelper {
@@ -33,6 +34,9 @@ export default class HamHelper {
 
   /* @ JSON */
   static get json() { return json }
+ 
+  /* @ log */
+  static get log() { return log }
 
   /* @ TwoWayMap */
   static get TwoWayMap() { return twoWayMap }
