@@ -14,7 +14,7 @@ export default {
     } else return typeof target;
   },
 
-  uuid() { return shuffle(shuffle(Date.now().toString(36)) + shuffle(Math.random().toString(36).substr(2))) },
+  uuid() { return this.shuffle(this.shuffle(Date.now().toString(36)) + shuffle(Math.random().toString(36).substr(2))) },
 
 
   shuffle(a = '' || []) {
