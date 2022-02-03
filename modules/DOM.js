@@ -40,7 +40,11 @@ export default {
 
   // @removeAllChildren
   removeAllChildren(parent) {
-    try { while (parent.firstChild) { parent.removeChild(parent.firstChild) } }
+    try {
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild)
+      }
+    }
     catch (e) { console.error(`HAM ERROR: Unable to remove children from PARENT (${parent})`) }
   },
 
