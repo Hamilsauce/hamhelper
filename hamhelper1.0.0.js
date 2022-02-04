@@ -14,6 +14,7 @@ import
   twoWayMap,
   json,
   log,
+  object,
 } from './modules/index.js';
 
 export default class HamHelper {
@@ -34,7 +35,10 @@ export default class HamHelper {
 
   /* @ JSON */
   static get json() { return json }
- 
+
+  /* @ object */
+  static get object() { return object }
+
   /* @ log */
   static get log() { return log }
 
@@ -61,6 +65,18 @@ export default class HamHelper {
 
   /* @ UTIL */
   static get utils() { return utils }
+
+  /* @ DOWNLOAD */
+  static download(filename, text) {
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
 
   /* @ HELP */
   static get help() {
