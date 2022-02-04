@@ -9,4 +9,5 @@ export { default as c2j } from './csvToJson.js';
 export { pipe, pipelineHelp } from './pipeline.js';
 export { default as twoWayMap } from './TwoWayMap.js';
 export { default as json } from './json.js';
+export { default as object } from './object.js';
 export { default as log } from './log.js';
