@@ -1,4 +1,4 @@
-/* Last updated: 11/21/21 */
+/* Last updated: 02/22/22 */
 
 import
 {
@@ -18,12 +18,11 @@ import
 } from './modules/index.js';
 
 export default class HamHelper {
-  // constructor() {}
 
   /* @ PIPELINE */
   static get pipeline() { return pipe }
 
-  /* @ PIPELINE */
+  /* @ CONSTANTS */
   static get CONSTANTS() {
     return {
       ALPHABET: (
@@ -97,7 +96,6 @@ export default class HamHelper {
       }))
   };
 
-
   /* @ ASYNC */
   static async asyncReduce({ collectionName, sources }) {
     return (await fetchCollectionSources(sources))
@@ -109,7 +107,6 @@ export default class HamHelper {
         return acc;
       }, new Map([[collectionName, new Map()]]));
   };
-
 
   /* @ OBJECT */
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }

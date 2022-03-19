@@ -14,8 +14,28 @@ export default {
     } else return typeof target;
   },
 
-  uuid() { return this.shuffle(this.shuffle(Date.now().toString(36)) + this.shuffle(Math.random().toString(36).substr(2))) },
-
+  uuid() {
+    return this.shuffle(
+      this.shuffle(Date.now().toString(36)) +
+      this.shuffle(Math.random().toString(36).substr(2)))
+  },
+  
+  percent() {
+    return {
+      ofQuantity(a, c) {
+        const n = a / 100 * c;
+        return n
+      },
+      isAofB(a, c) {
+        const n = a / c * 100;
+        return n
+      },
+      change(a, c) {
+        const n = (c - a) / a * 100;
+        return n
+      }
+    }
+  },
 
   shuffle(a = '' || []) {
     if (typeof a === 'string') {
@@ -42,6 +62,8 @@ export default {
 - shuffle(a = '' || []);
 
 - uuid();
+
+- percent() => { ofQuantity(a, b), isAofB(a, b),  change(a, b);}
 
 - getValueType(target, deepTest = false, customClassType = null)
   `.trim();

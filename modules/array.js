@@ -3,6 +3,7 @@ export default {
     return arrs[0]
       .reduce((acc, curr, i) => {
         let row = [];
+       
         arrs.forEach((arr, j) => row = [...row, arr[i]]);
         return [...acc, row];
       }, []);
