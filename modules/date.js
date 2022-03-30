@@ -1,6 +1,6 @@
 export default {
   createDateFromValue(dateValue = null) {
-    if (dateValue === null || !isValidDateValue(dateValue)) return;
+    if (dateValue === null || !this.isValidDateValue(dateValue)) return;
     return new Date(Date.parse(dateValue));
   },
 
