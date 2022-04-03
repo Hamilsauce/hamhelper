@@ -1,4 +1,20 @@
+import { getElementData, coerceData } from 'dom.get-element-data.js'
+
 export default {
+
+  // @element  @dataset 
+  setElementDataset(el, dataObj = {}) {
+    if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
+    else this.log('no data provided')
+  },
+
+  // @element  @dataset 
+  getElementDataset(el) {
+    if (!el) return;
+    getElementData(el)
+  },
+
+
 
   // @ ADD REMOVE CLASS
   classList(el, add = true, ...classes) {
@@ -20,9 +36,9 @@ export default {
   // @createElement
   newElement(tag = 'div', attrs = {}, children = [], template = '') {
     const el = attrs.namespaceURI ? document.createElementNS(attrs.namespaceURI, tag) : document.createElement(tag);
-    
+
     el.innerHTML = template;
-    
+
     for (let attr of Object.keys(attrs)) {
       if (attr === 'data') { Object.entries(attrs[attr]).forEach(([prop, val]) => el.dataset[prop] = val) }
       else if (attr === 'classList') { el.classList.add(...attrs[attr]) }
@@ -46,15 +62,13 @@ export default {
     catch (e) { console.error(`HAM ERROR: Unable to remove children from PARENT (${parent})`) }
   },
 
-  // @element  @dataset 
-  setElementDataset(el, dataObj = {}) {
-    if (!this.isObjectEmpty(dataObj) && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
-    else this.log('no data provided')
-  },
-
   help() {
     return `
    === DOM ===
+   
+- setElementDataset(el, dataObj = {}): adds to dataset
+
+- getElementData(el) => new Map of coerced data attributes
 
 - DOM.newElement(tag = 'div', attrs = {}, children = [], template = '');
 
