@@ -6,7 +6,7 @@ import H from './hamhelper1.0.0.js'
 // import rx from './modules/rxjs.js'
 // console.log('H.help()', H.help())
 
-const { TwoWayMap, event, date, array, utils, pipeline, text, help } = H;
+const { DOM,TwoWayMap, event, date, array, utils, pipeline, text, help } = H;
 console.log({ pipeline });
 
 const poop = 'kebab-case'
@@ -21,10 +21,24 @@ const app = document.querySelector('#app');
 const targ = document.querySelectorAll('.targ')
 const footer = document.querySelector('.container')
 
+
+  DOM.setElementDataset(app, {
+    name:'app', 
+    isCool: true,
+    numberOfShit: 23.5,
+    
+  })
+  console.warn('app getdataset',[...DOM.getElementDataset(app)])
+console.log('app.dataset', app.dataset)
 app.addEventListener('click', e => {
-  const res = event.testEventPathForElement(e, targ)
-  console.log('res', res)
+  // const res = event.testEventPathForElement(e, targ)
+  
+  // console.log('res', res)
 })
+
+
+
+
 
 
 const numToTextPipe = pipeline(
@@ -39,8 +53,8 @@ console.log('am', numToTextPipe(0))
 
 
 
-console.log(Object.fromEntries([['fart', ['fart']]]));
-console.timeEnd('timer1')
+// console.log(Object.fromEntries([['fart', ['fart']]]));
+// console.timeEnd('timer1')
 
 
 const freq = (arr) => {

@@ -8,7 +8,8 @@ export const coerceData = (d) => {
   else return d
 }
 
-export const getElementData = (el) => Object.entries(table.dataset)
+export const getElementDataset = (el) => {return Object.entries(el.dataset)
   .reduce((map, [k, v], i) => {
     return map.set(k, coerceData(v))
   }, new Map());
+}
