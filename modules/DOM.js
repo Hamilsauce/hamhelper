@@ -1,18 +1,18 @@
-import { getElementDataset, coerceData } from '/modules/dom.get-element-data.js'
+// import { getElementDataset, coerceData } from './get-element-data.js'
 
 export default {
 
   // @element  @dataset 
-  setElementDataset(el, dataObj = {}) {
-    if (dataObj && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
-    else this.log('no data provided')
-  },
+  // setElementDataset(el, dataObj = {}) {
+  //   if (dataObj && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
+  //   else this.log('no data provided')
+  // },
 
   // @element  @dataset 
-  getElementDataset(el) {
-    if (!el) return;
-   return getElementDataset(el)
-  },
+  // getElementDataset(el) {
+  //   if (!el) return;
+  // return getElementDataset(el)
+  // },
 
 
 

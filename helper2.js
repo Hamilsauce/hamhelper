@@ -1,18 +1,21 @@
+import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
+const { rx, DOM,TwoWayMap, event, date, array, utils, pipeline, text, help} = ham;
+
 console.time('timer1')
 
-import H from './hamhelper1.0.0.js'
-// import { pipe } from './modules/pipeline.js';
+// import H from './hamhelper1.0.0.js'
+import { pipe } from './modules/pipeline.js';
 // import { TwoWayMap } from './modules/TwoWayMap.js';
 // import rx from './modules/rxjs.js'
 // console.log('H.help()', H.help())
 
-const { DOM,TwoWayMap, event, date, array, utils, pipeline, text, help } = H;
+// const { DOM,TwoWayMap, event, date, array, utils, pipeline, text, help } = H;
 console.log({ pipeline });
 
 const poop = 'kebab-case'
 // console.log('poop.split(/^[A-Z]*$/)', poop.split(/[A-Z]/g)) 
-console.log('camelToKebab', text.camelToKebab(poop));
-console.log('kebabToCamel', text.kebabToCamel(poop));
+// console.log('camelToKebab', text.camelToKebab(poop));
+// console.log('kebabToCamel', text.kebabToCamel(poop));
 
 console.group(new TwoWayMap([[1, '1']]));
 console.table(new TwoWayMap([[1, '1']]));
@@ -32,7 +35,7 @@ const footer = document.querySelector('.container')
 console.log('app.dataset', app.dataset)
 app.addEventListener('click', e => {
   // const res = event.testEventPathForElement(e, targ)
-  
+  console.log('akut');
   // console.log('res', res)
 })
 
