@@ -1,6 +1,5 @@
 export default {
 
-
   getValueType(target, deepTest = false, customClassType = null) {
     // TODO Work on params
     if (target === null) return 'null';
@@ -19,7 +18,7 @@ export default {
       this.shuffle(Date.now().toString(36)) +
       this.shuffle(Math.random().toString(36).substr(2)))
   },
-  
+
   percent() {
     return {
       ofQuantity(a, c) {
@@ -54,11 +53,37 @@ export default {
     } else return;
   },
 
+  range(start, stop) {
+    return new Array(stop - start)
+      .fill(0)
+      .map((v, i) => start + i);
+  },
+
+  promisify(fn) { 
+    // promisify(fn)(...args) => promise
+    return (...args) =>
+      new Promise((resolve, reject) =>
+        fn(...args, (err, data) => (err ? reject(err) : resolve(data)))
+      );
+  },
+
+  alphabet() {
+    return this.range(
+      "A".charCodeAt(),
+      "Z".charCodeAt() + 1
+    ).map(x => String.fromCharCode(x));
+  },
 
   help() {
     return `
     === Util ===
     
+- range(start,fin)=>array
+
+- alphabet
+
+- promisify(fn)(...args) => promise
+
 - shuffle(a = '' || []);
 
 - uuid();

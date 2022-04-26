@@ -20,10 +20,6 @@ export default {
 
   multiFilter(array = [], ...criteria) {},
 
-  groupBy() {},
-
-  distinctValues(arr) { return Array.isArray(arr) ? [...new Set(arr)] : ['err'] },
-
   async asyncDistinctValues() {
     (
       (await (
@@ -32,7 +28,12 @@ export default {
     )
   },
 
+
+
+
+  groupBy() {},
   difference(arr1, arr2, comparer) { return arr1.filter(arr1El => !arr2.includes(arr1El)) },
+  distinctValues(arr) { return Array.isArray(arr) ? [...new Set(arr)] : ['err'] },
   intersection(arr1, arr2, comparer) { return arr1.filter(arr1El => arr2.includes(arr1El)) },
   union(arr1, arr2, comparer) { return [...new Set([...arr1, ...arr2])] },
 

@@ -8,8 +8,15 @@ export const coerceData = (d) => {
   else return d
 }
 
-export const getElementDataset = (el) => {return Object.entries(el.dataset)
-  .reduce((map, [k, v], i) => {
-    return map.set(k, coerceData(v))
-  }, new Map());
+export const getElementDataset = (el) => {
+  return Object.entries(el.dataset)
+    .reduce((map, [k, v], i) => {
+      return map.set(k, coerceData(v))
+    }, new Map());
+}
+
+export const setElementDataset = (el, dataObj = {}) => {
+  if (dataObj && el) Object.entries(dataObj)
+    .forEach(([prop, val]) => el.dataset[prop] = val);
+  else console.log('no data provided')
 }
