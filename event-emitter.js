@@ -19,6 +19,7 @@ export class EventEmitter extends EventTarget {
       .get(eventName)
 
   }
+  
   registerListener(eventName, listener) {
     this.registerEvent(eventName).add(listener);
     return this
