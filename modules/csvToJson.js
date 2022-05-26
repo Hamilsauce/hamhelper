@@ -1,5 +1,6 @@
 
 export default (raw) => {
+ function help(){}
   let lines = raw.split(/(?:\r\n|\n)+/).filter(function(el) { return el.length != 0 });
   let headers = lines.splice(0, 1)[0].split(",");
   let valuesRegExp = /(?:\"([^\"]*(?:\"\"[^\"]*)*)\")|([^\",]+)/g;
