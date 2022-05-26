@@ -4,7 +4,7 @@ import date from './date.js';
 import DOM from './DOM.js';
 import event from './event.js';
 import utils from './utils.js';
-import csvToJson from './csvToJson.js';
+// import csvToJson from './csvToJson.js';
 import shortcuts from './shortcuts.js';
 import TwoWayMap from './TwoWayMap.js';
 import json from './json.js';
@@ -28,7 +28,7 @@ const topicMap = new Map(
     ['DOM', DOM.help()],
     ['event', event.help()],
     ['utils', utils.help()],
-    ['csvToJson', csvToJson.help()],
+    // ['csvToJson', csvToJson.help()],
     ['shortcuts', shortcuts.help()],
   ]
 );
@@ -36,7 +36,7 @@ const topicMap = new Map(
 export default {
 
   help(msg = 'Leave a message such as where this call is located.', ...topics) {
-    if (topics.length === 0) {
+    if (ptopics.length === 0) {
       console.info(
         `import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
         MESSAGE: ${msg}\n\n\n`,
