@@ -36,7 +36,7 @@ const topicMap = new Map(
 export default {
 
   help(msg = 'Leave a message such as where this call is located.', ...topics) {
-    if (ptopics.length === 0) {
+    if (topics.length === 0) {
       console.info(
         `import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
         MESSAGE: ${msg}\n\n\n`,
