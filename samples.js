@@ -32,8 +32,7 @@ const sortObjectPropertiesByName = (obj, type = 'asc') => {
 		sortedObj = Object.entries(obj)
 			.sort((a, b) => a[0] - b[0])
 			.reduce((newObj, [key, val], i) => {
-				newObj[key] = val;
-				return newObj
+				return {...newObj,[key]: val}
 			}, {})
 	} else if (sortType === 'desc') {
 

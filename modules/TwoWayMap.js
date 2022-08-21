@@ -11,6 +11,7 @@ export default class extends Map {
   set(key, value) {
     super.set(key, value);
     super.set(value, key);
+    
     return this;
   }
   
