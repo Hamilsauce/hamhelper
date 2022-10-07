@@ -22,7 +22,7 @@ export default {
 
   longPress(el, time = 700, callback) {
     el.addEventListener('touchstart', e => {
-      window.hamLongPressTimer = setTimeout(() => { callback(e) }, 700)
+      window.hamLongPressTimer = setTimeout(() => { callback(e) }, time)
     });
     el.addEventListener('touchend', e => { clearTimeout(window.hamLongPressTimer) })
   },

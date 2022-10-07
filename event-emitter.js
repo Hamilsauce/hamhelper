@@ -51,3 +51,10 @@ export class EventEmitter extends EventTarget {
     });
   }
 }
+
+let intermediateValue1 = await asynchronousFunction1();
+let intermediateValue2 = await asynchronousFunction2();
+let intermediateValue3 = await asynchronousFunction3();
+let result = await asynchronousFunction3()
+
+const myFetchedAndParsedData = (await (await fetch(this.url)).json());

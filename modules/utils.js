@@ -59,7 +59,7 @@ export default {
       .map((v, i) => start + i);
   },
 
-  promisify(fn) { 
+  promisify(fn) {
     // promisify(fn)(...args) => promise
     return (...args) =>
       new Promise((resolve, reject) =>
