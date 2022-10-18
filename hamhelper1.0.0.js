@@ -37,7 +37,7 @@ export default class HamHelper {
   static get json() { return json }
   
   /* @ Templater */
-  static get templater() { return templater }
+  static get template() { return templater }
 
   /* @ object */
   static get object() { return object }
