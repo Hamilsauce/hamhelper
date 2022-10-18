@@ -5,21 +5,24 @@
 */
 
 export class EventEmitter extends EventTarget {
-#eventRegistry
+  #eventRegistry = new Map();
+  listeners = [];
+
   constructor() {
     super();
-    this.#eventRegistry = new Map()
-    this.listeners = [];
+
+    // this.listeners = [];
   }
 
   registerEvent(eventName) {
-    if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName)
+    if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
+
     return this.#eventRegistry
       .set(eventName, new Set())
-      .get(eventName)
+      .get(eventName);
 
   }
-  
+
   registerListener(eventName, listener) {
     this.registerEvent(eventName).add(listener);
     return this
@@ -42,7 +45,7 @@ export class EventEmitter extends EventTarget {
     if (!this.#eventRegistry.has(evt)) return;
     this.#eventRegistry.get(evt).forEach(_ => _(data))
   }
-  
+
   dispatch(name, detail = {}) {
     this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
 
@@ -52,9 +55,9 @@ export class EventEmitter extends EventTarget {
   }
 }
 
-let intermediateValue1 = await asynchronousFunction1();
-let intermediateValue2 = await asynchronousFunction2();
-let intermediateValue3 = await asynchronousFunction3();
-let result = await asynchronousFunction3()
+// let intermediateValue1 = await asynchronousFunction1();
+// let intermediateValue2 = await asynchronousFunction2();
+// let intermediateValue3 = await asynchronousFunction3();
+// let result = await asynchronousFunction3()
 
-const myFetchedAndParsedData = (await (await fetch(this.url)).json());
+// const myFetchedAndParsedData = (await (await fetch(this.url)).json());
