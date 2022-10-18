@@ -15,6 +15,7 @@ import
   json,
   log,
   object,
+  templater,
 } from './modules/index.js';
 
 export default class HamHelper {
@@ -34,6 +35,9 @@ export default class HamHelper {
 
   /* @ JSON */
   static get json() { return json }
+  
+  /* @ Templater */
+  static get templater() { return templater }
 
   /* @ object */
   static get object() { return object }
