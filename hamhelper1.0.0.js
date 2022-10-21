@@ -16,6 +16,7 @@ import
   log,
   object,
   templater,
+  addDragAction,
 } from './modules/index.js';
 
 export default class HamHelper {
@@ -33,8 +34,11 @@ export default class HamHelper {
     }
   }
 
-  /* @ JSON */
-  static get json() { return json }
+/* @ JSON */
+static get json() { return json }
+
+/* @ RXJS addDragAction */
+static get addDragAction() { return addDragAction }
   
   /* @ Templater */
   static get template() { return templater }
