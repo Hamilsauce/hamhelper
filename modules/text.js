@@ -2,12 +2,12 @@ import utils from './utils.js'
 const { getValueType } = utils;
 
 const caseTypes = new Map([
-  [camel, 'camel'],
-  [kebab, 'kebab'],
-  [snake, 'snake'],
-  [title, 'title'],
-  [upper, 'upper'],
-  [lower, 'lower'],
+  ['camel', 'camel'],
+  ['kebab', 'kebab'],
+  ['snake', 'snake'],
+  ['title', 'title'],
+  ['upper', 'upper'],
+  ['lower', 'lower'],
 ]);
 
 
