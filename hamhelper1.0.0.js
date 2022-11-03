@@ -18,15 +18,19 @@ import
   templater,
   addDragAction,
   importUMD,
+  rxjs,
 } from './modules/index.js';
 
 export default class HamHelper {
 
   /* @ PIPELINE */
   static get pipeline() { return pipe }
-  
+
   /* @ IMPORT UMD MODULE EXPORTS */
   static get importUMD() { return importUMD }
+
+  /* @ RXJS LIBRARY MODULE */
+  static get rxjs() { return rxjs }
 
   /* @ CONSTANTS */
   static get CONSTANTS() {

@@ -1,5 +1,5 @@
-import { importUMD } from './index.js';
-const rxjs = importUMD('https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js')
+import { rxjs } from './rx.js';
+// const rxjs = importUMD('https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js')
 const { fromEvent, delay, of } = rxjs;
 const { takeUntil, takeWhile, switchMap, scan, map, tap, filter, } = rxjs.operators;
 
