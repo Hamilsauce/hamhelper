@@ -13,3 +13,4 @@ export { default as json } from './json.js';
 export { default as object } from './object.js';
 export { default as log } from './log.js';
 export { default as templater } from './templater.js';
+export { default as importUMD } from './import-umd.js';

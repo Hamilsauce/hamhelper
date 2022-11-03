@@ -1,5 +1,20 @@
 import utils from './utils.js'
 const { getValueType } = utils;
+
+const caseTypes = new Map([
+  [camel, 'camel'],
+  [kebab, 'kebab'],
+  [snake, 'snake'],
+  [title, 'title'],
+  [upper, 'upper'],
+  [lower, 'lower'],
+]);
+
+
+// ['array', 'string', 'number'].includes(getValueType(chars[0])) ? getValueType(chars[0]) : null;
+
+
+
 export default {
   capitalize(text) {
     if (typeof text === 'string') return `${text.slice(0,1).toUpperCase()}${text.slice(1).toLowerCase()}`
@@ -8,6 +23,36 @@ export default {
   camelToKebab(text) {
     if (typeof text === 'string') return [...text.normalize()].reduce((result, letter, i) => `${result}${letter.match(/[A-Z]/g) && i !== 0 ? `-${letter}` : letter}`.toLowerCase(), '');
   },
+
+
+
+  convertCasing(text = '') {
+    if (!(!!text)) return;
+
+    return {
+      from(fromCaseType = '') {
+        if (!(caseTypes.has(fromCaseType))) return;
+
+        return {
+          to(toCaseType = '') {
+            if (!(caseTypes.has(toCaseType))) return;
+              
+          },
+        }
+      },
+    }
+  },
+
+  // Regex to find all letters preceded by _,
+  // and replace the under score with the capitalized letter
+  snakeToCamel(text) {
+    return text.replace(/([-_][a-z])/ig, ($1) => {
+      return $1.toUpperCase()
+        .replace('-', '')
+        .replace('_', '');
+    });
+  },
+
 
   kebabToCamel(text, capitalizeFirst = false) {
     let lastLetterDash = false;

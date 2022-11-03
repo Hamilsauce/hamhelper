@@ -17,12 +17,16 @@ import
   object,
   templater,
   addDragAction,
+  importUMD,
 } from './modules/index.js';
 
 export default class HamHelper {
 
   /* @ PIPELINE */
   static get pipeline() { return pipe }
+  
+  /* @ IMPORT UMD MODULE EXPORTS */
+  static get importUMD() { return importUMD }
 
   /* @ CONSTANTS */
   static get CONSTANTS() {
@@ -34,12 +38,12 @@ export default class HamHelper {
     }
   }
 
-/* @ JSON */
-static get json() { return json }
+  /* @ JSON */
+  static get json() { return json }
 
-/* @ RXJS addDragAction */
-static get addDragAction() { return addDragAction }
-  
+  /* @ RXJS addDragAction */
+  static get addDragAction() { return addDragAction }
+
   /* @ Templater */
   static get template() { return templater }
 
