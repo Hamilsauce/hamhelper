@@ -72,14 +72,20 @@ export class StateEmitter extends EventEmitter {
     this.#cache[eventName] = values;
     return this.#cache[eventName];
   }
-
-  registerEvent(eventName) {
-    if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
-
-    return this.#eventRegistry
-      .set(eventName, new Set())
-      .get(eventName);
+  
+  cacheHas(eventName) {return !!this.#cache[eventName]}
+  
+  getFromCache(eventName) {
+    return this.cacheHas(eventName) ? this.#cache[eventName] : null;
   }
+
+  // registerEvent(eventName) {
+  //   if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
+
+  //   return this.#eventRegistry
+  //     .set(eventName, new Set())
+  //     .get(eventName);
+  // }
 
   // fire() {
   //   super.fire()
@@ -88,39 +94,39 @@ export class StateEmitter extends EventEmitter {
   registerListener(eventName, listener) {
     super.registerEvent(eventName).add(listener);
     
-    if (!!this.#cache[eventName]) {
+    if (this.cacheHas(eventName)) {
       this.fire(listener, this.#cache[eventName])
     }
     return this
   }
 
-  on(type, listener) {
-    this.registerListener(type, listener);
-    return () => this.unregisterListener(type, listener)
-  }
+  // on(type, listener) {
+  //   this.registerListener(type, listener);
+  //   return () => this.unregisterListener(type, listener)
+  // }
 
-  unregisterListener(eventName, listener) {
-    return this.#eventRegistry.get(eventName).delete(listener)
-  }
+  // unregisterListener(eventName, listener) {
+  //   return this.#eventRegistry.get(eventName).delete(listener)
+  // }
 
-  off(type, listener) {
-    this.removeEventListener(type, listener)
-  }
-
+  // off(type, listener) {
+  //   this.removeEventListener(type, listener)
+  // }
+// 
   emit(eventName, data) {
-    if (!this.#eventRegistry.has(eventName)) return;
-    this.#eventRegistry.get(eventName).forEach(_ => this.fire(_, data));
-    
+    // if (!this.#eventRegistry.has(eventName)) return;
+    // this.#eventRegistry.get(eventName).forEach(_ => this.fire(_, data));
+    super.emit(eventName, data);
     this.#cache[eventName] = data
   }
 
-  dispatch(name, detail = {}) {
-    this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
+  // dispatch(name, detail = {}) {
+  //   this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
 
-    this.listeners.forEach((l, i) => {
-      l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
-    });
-  }
+  //   this.listeners.forEach((l, i) => {
+  //     l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
+  //   });
+  // }
 }
 
 // let intermediateValue1 = await asynchronousFunction1();
