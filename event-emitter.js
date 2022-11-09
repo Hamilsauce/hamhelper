@@ -6,12 +6,12 @@
 
 export class EventEmitter extends EventTarget {
   #eventRegistry = new Map();
-  listeners = [];
+  #listeners = [];
 
   constructor() {
     super();
 
-    // this.listeners = [];
+    // this.#listeners = [];
   }
 
   registerEvent(eventName) {
@@ -43,7 +43,8 @@ export class EventEmitter extends EventTarget {
 
   fire(listener, data) {
     listener(data);
-    return true
+    
+    return true;
   }
 
   emit(evt, data) {
@@ -54,7 +55,7 @@ export class EventEmitter extends EventTarget {
   dispatch(name, detail = {}) {
     this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
 
-    this.listeners.forEach((l, i) => {
+    this.#listeners.forEach((l, i) => {
       l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
     });
   }
@@ -72,9 +73,9 @@ export class StateEmitter extends EventEmitter {
     this.#cache[eventName] = values;
     return this.#cache[eventName];
   }
-  
-  cacheHas(eventName) {return !!this.#cache[eventName]}
-  
+
+  cacheHas(eventName) { return !!this.#cache[eventName] }
+
   getFromCache(eventName) {
     return this.cacheHas(eventName) ? this.#cache[eventName] : null;
   }
@@ -93,7 +94,7 @@ export class StateEmitter extends EventEmitter {
 
   registerListener(eventName, listener) {
     super.registerEvent(eventName).add(listener);
-    
+
     if (this.cacheHas(eventName)) {
       this.fire(listener, this.#cache[eventName])
     }
@@ -112,7 +113,7 @@ export class StateEmitter extends EventEmitter {
   // off(type, listener) {
   //   this.removeEventListener(type, listener)
   // }
-// 
+  // 
   emit(eventName, data) {
     // if (!this.#eventRegistry.has(eventName)) return;
     // this.#eventRegistry.get(eventName).forEach(_ => this.fire(_, data));
@@ -120,7 +121,7 @@ export class StateEmitter extends EventEmitter {
     this.#cache[eventName] = data
   }
 
-  // dispatch(name, detail = {}) {
+  // dispatch(name, detail = {}) {#
   //   this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
 
   //   this.listeners.forEach((l, i) => {
