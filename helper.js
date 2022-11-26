@@ -1,18 +1,26 @@
 // import { TwoWayMap } from './modules/TwoWayMap.js';
 import H from './hamhelper1.0.0.js'
-const { TwoWayMap, DOM, event, array, help } = H
+const { timer, TwoWayMap, DOM, event, array, help } = H
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
 // help('sux')
-// console.log('poop');
+// timer.start();
+// console.log(timer);
+
+setInterval(() => {
+  timer.logTime()
+  console.log('', );
+}, 1000)
 
 event.selectAllContent(document.querySelector('.log'))
 
 const scriptTag = document.createElement('script')
 const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 const newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-
+document.body.onclick = (e) => {
+  timer.toggle()
+}
 // console.log(scriptTag, newSvg.nodeName, newLine.nodeName);
 const output = DOM.qs('.output')
 // console.log('creating newEl');
@@ -98,7 +106,7 @@ let arr5 = [
 const twMap = new TwoWayMap(array.zip(arr2, arr3))
 
 // console.log('TwoWayMap(array.zip(arr2, arr3))',
-  // [...twMap]
+// [...twMap]
 // )
 
 const els = arr1

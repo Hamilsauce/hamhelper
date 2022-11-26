@@ -15,3 +15,4 @@ export { default as log } from './log.js';
 export { default as templater } from './templater.js';
 export { default as importUMD } from './import-umd.js';
 export { rxjs } from './rx.js';
+export { timer } from './timer.js';

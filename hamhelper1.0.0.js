@@ -19,6 +19,7 @@ import
   addDragAction,
   importUMD,
   rxjs,
+  timer,
 } from './modules/index.js';
 
 export default class HamHelper {
@@ -31,6 +32,9 @@ export default class HamHelper {
 
   /* @ RXJS LIBRARY MODULE */
   static get rxjs() { return rxjs }
+  
+  /* @ TIME LOGGER MODULE */
+  static get timer() { return timer }
 
   /* @ CONSTANTS */
   static get CONSTANTS() {

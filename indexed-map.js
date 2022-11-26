@@ -16,15 +16,17 @@ export class IndexedMap extends Map {
     const temp = [...this.entries()];
 
     temp.splice(index, 0, [key, value]);
+    
     this.clear();
+    
     temp.forEach(([k, v]) => this.set(k, v));
   }
 
   setAtIndex(index, value) {
-    return super.set(this.getKeyAtIndex(index), value);
+    return super.set(this.getByKeyAtIndex(index), value);
   }
 
-  getKeyAtIndex(i) {
+  getByKeyAtIndex(i) {
     return super.get(this.#index[i]);
   }
 
