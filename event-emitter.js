@@ -14,7 +14,7 @@ export class EventEmitter extends EventTarget {
     // this.#listeners = [];
   }
 
-  registerEvent(eventName) {
+  #registerEvent(eventName) {
     if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
 
     return this.#eventRegistry
@@ -23,17 +23,17 @@ export class EventEmitter extends EventTarget {
 
   }
 
-  registerListener(eventName, listener) {
-    this.registerEvent(eventName).add(listener);
+  #registerListener(eventName, listener) {
+    this.#registerEvent(eventName).add(listener);
     return this
   }
 
   on(type, listener) {
-    this.registerListener(type, listener);
-    return () => this.unregisterListener(type, listener)
+    this.#registerListener(type, listener);
+    return () => this.#unregisterListener(type, listener)
   }
 
-  unregisterListener(eventName, listener) {
+  #unregisterListener(eventName, listener) {
     return this.#eventRegistry.get(eventName).delete(listener)
   }
 
@@ -49,7 +49,7 @@ export class EventEmitter extends EventTarget {
 
   emit(evt, data) {
     if (!this.#eventRegistry.has(evt)) return;
-    this.#eventRegistry.get(evt).forEach(_ => this.fire(_, data))
+    this.#eventRegistry.get(evt).forEach(_ => this.fire.bind(this)(_, data))
   }
 
   dispatch(name, detail = {}) {
@@ -61,7 +61,7 @@ export class EventEmitter extends EventTarget {
   }
 }
 
-// export class StateEmitter extends EventEmitter {
+// export class StateEmitter extends EventEmitter {#
 //   #cache = {};
 
 //   constructor(state) {
@@ -80,7 +80,7 @@ export class EventEmitter extends EventTarget {
 //     return this.cacheHas(eventName) ? this.#cache[eventName] : null;
 //   }
 
-//   // registerEvent(eventName) {
+//   // #registerEvent(eventName) {
 //   //   if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
 
 //   //   return this.#eventRegistry
@@ -92,8 +92,8 @@ export class EventEmitter extends EventTarget {
 //   //   super.fire()
 //   // }
 
-//   registerListener(eventName, listener) {
-//     super.registerEvent(eventName).add(listener);
+//   #registerListener(eventName, listener) {
+//     super.#registerEvent(eventName).add(listener);
 
 //     if (this.cacheHas(eventName)) {
 //       this.fire(listener, this.#cache[eventName])
@@ -102,7 +102,7 @@ export class EventEmitter extends EventTarget {
 //   }
 
 //   // on(type, listener) {
-//   //   this.registerListener(type, listener);
+//   //   this.#registerListener(type, listener);
 //   //   return () => this.unregisterListener(type, listener)
 //   // }
 
