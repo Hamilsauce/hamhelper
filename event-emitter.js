@@ -43,7 +43,7 @@ export class EventEmitter extends EventTarget {
 
   fire(listener, data) {
     listener(data);
-    
+
     return true;
   }
 
@@ -61,74 +61,74 @@ export class EventEmitter extends EventTarget {
   }
 }
 
-export class StateEmitter extends EventEmitter {
-  #cache = {};
+// export class StateEmitter extends EventEmitter {
+//   #cache = {};
 
-  constructor(state) {
-    super();
+//   constructor(state) {
+//     super();
 
-  }
+//   }
 
-  cacheEventValue(eventName, value) {
-    this.#cache[eventName] = values;
-    return this.#cache[eventName];
-  }
+//   cacheEventValue(eventName, value) {
+//     this.#cache[eventName] = values;
+//     return this.#cache[eventName];
+//   }
 
-  cacheHas(eventName) { return !!this.#cache[eventName] }
+//   cacheHas(eventName) { return !!this.#cache[eventName] }
 
-  getFromCache(eventName) {
-    return this.cacheHas(eventName) ? this.#cache[eventName] : null;
-  }
+//   getFromCache(eventName) {
+//     return this.cacheHas(eventName) ? this.#cache[eventName] : null;
+//   }
 
-  // registerEvent(eventName) {
-  //   if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
+//   // registerEvent(eventName) {
+//   //   if (this.#eventRegistry.has(eventName)) return this.#eventRegistry.get(eventName);
 
-  //   return this.#eventRegistry
-  //     .set(eventName, new Set())
-  //     .get(eventName);
-  // }
+//   //   return this.#eventRegistry
+//   //     .set(eventName, new Set())
+//   //     .get(eventName);
+//   // }
 
-  // fire() {
-  //   super.fire()
-  // }
+//   // fire() {
+//   //   super.fire()
+//   // }
 
-  registerListener(eventName, listener) {
-    super.registerEvent(eventName).add(listener);
+//   registerListener(eventName, listener) {
+//     super.registerEvent(eventName).add(listener);
 
-    if (this.cacheHas(eventName)) {
-      this.fire(listener, this.#cache[eventName])
-    }
-    return this
-  }
+//     if (this.cacheHas(eventName)) {
+//       this.fire(listener, this.#cache[eventName])
+//     }
+//     return this
+//   }
 
-  // on(type, listener) {
-  //   this.registerListener(type, listener);
-  //   return () => this.unregisterListener(type, listener)
-  // }
+//   // on(type, listener) {
+//   //   this.registerListener(type, listener);
+//   //   return () => this.unregisterListener(type, listener)
+//   // }
 
-  // unregisterListener(eventName, listener) {
-  //   return this.#eventRegistry.get(eventName).delete(listener)
-  // }
+//   // unregisterListener(eventName, listener) {
+//   //   return this.#eventRegistry.get(eventName).delete(listener)
+//   // }
 
-  // off(type, listener) {
-  //   this.removeEventListener(type, listener)
-  // }
-  // 
-  emit(eventName, data) {
-    // if (!this.#eventRegistry.has(eventName)) return;
-    // this.#eventRegistry.get(eventName).forEach(_ => this.fire(_, data));
-    super.emit(eventName, data);
-    this.#cache[eventName] = data
-  }
+//   // off(type, listener) {
+//   //   this.removeEventListener(type, listener)
+//   // }
+//   // 
+//   emit(eventName, data) {
+//     // if (!this.#eventRegistry.has(eventName)) return;
+//     // this.#eventRegistry.get(eventName).forEach(_ => this.fire(_, data));
+//     super.emit(eventName, data);
+//     this.#cache[eventName] = data
+//   }
 
-  // dispatch(name, detail = {}) {#
-  //   this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
+//   // dispatch(name, detail = {}) {#
+//   //   this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
 
-  //   this.listeners.forEach((l, i) => {
-  //     l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
-  //   });
-  // }
-}
+//   //   this.listeners.forEach((l, i) => {
+//   //     l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
+//   //   });
+//   // }
+// }
 
 // let intermediateValue1 = await asynchronousFunction1();
 // let intermediateValue2 = await asynchronousFunction2();
