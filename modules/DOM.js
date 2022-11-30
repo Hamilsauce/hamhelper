@@ -1,5 +1,5 @@
 // import { getElementDataset, coerceData } from './get-element-data.js'
-
+import template from './templater.js';
 export default {
 
   // @element  @dataset 
@@ -34,6 +34,24 @@ export default {
   },
 
   // @createElement
+  createElement({ tag, templateName, elementProperties, }, ...children) {
+    const el = tag ? document.createElement(tag) : template(templateName);
+
+    if (!el) return null;
+
+    const { dataset, ...props } = elementProperties;
+
+    if (dataset) { Object.assign(el.dataset, dataset); }
+    if (props) { Object.assign(el, props); }
+
+    for (let child of children) {
+      if (typeof child != "string") el.append(...child);
+      else el.appendChild(document.createTextNode(child));
+    }
+
+    return el;
+  },
+
   newElement(tag = 'div', attrs = {}, children = [], template = '') {
     const el = attrs.namespaceURI ? document.createElementNS(attrs.namespaceURI, tag) : document.createElement(tag);
 

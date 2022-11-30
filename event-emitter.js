@@ -52,13 +52,13 @@ export class EventEmitter extends EventTarget {
     this.#eventRegistry.get(evt).forEach(_ => this.fire.bind(this)(_, data))
   }
 
-  dispatch(name, detail = {}) {
-    this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
+  // dispatch(name, detail = {}) {
+  //   this.self.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
 
-    this.#listeners.forEach((l, i) => {
-      l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
-    });
-  }
+  //   this.#listeners.forEach((l, i) => {
+  //     l.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
+  //   });
+  // }
 }
 
 // export class StateEmitter extends EventEmitter {#
