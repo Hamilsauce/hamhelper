@@ -1,17 +1,17 @@
 // import { TwoWayMap } from './modules/TwoWayMap.js';
 import H from './hamhelper1.0.0.js'
-const { timer, TwoWayMap, DOM, event, array, help } = H
+const {CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
 // help('sux')
 // timer.start();
-// console.log(timer);
+console.log(CONSTANTS.ALPHABET);
 
-setInterval(() => {
-  timer.logTime()
-  console.log('', );
-}, 1000)
+// setInterval(() => {
+//   timer.logTime()
+//   console.log('', );
+// }, 1000)
 
 event.selectAllContent(document.querySelector('.log'))
 

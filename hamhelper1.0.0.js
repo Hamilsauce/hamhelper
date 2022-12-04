@@ -32,7 +32,7 @@ export default class HamHelper {
 
   /* @ RXJS LIBRARY MODULE */
   static get rxjs() { return rxjs }
-  
+
   /* @ TIME LOGGER MODULE */
   static get timer() { return timer }
 
@@ -41,7 +41,7 @@ export default class HamHelper {
     return {
       ALPHABET: (
         new Array('Z'.charCodeAt() - 'A'.charCodeAt() + 1)
-        .fill(0).map((v, i) => ('A'.charCodeAt() + 1) + i)
+        .fill(null).map((v, i) => ('A'.charCodeAt() === 0 ? 1 : 'A'.charCodeAt()) + i)
       ).map(x => String.fromCharCode(x)),
     }
   }
