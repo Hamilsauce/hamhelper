@@ -21,10 +21,10 @@ export default {
   },
 
   longPress(el, time = 700, callback) {
-    el.addEventListener('touchstart', e => {
+    el.addEventListener('pointerdown', e => {
       window.hamLongPressTimer = setTimeout(() => { callback(e) }, time)
     });
-    el.addEventListener('touchend', e => { clearTimeout(window.hamLongPressTimer) })
+    el.addEventListener('pointerup', e => { clearTimeout(window.hamLongPressTimer) })
   },
 
   isHandleEventSource(e) {
