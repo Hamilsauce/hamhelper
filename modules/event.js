@@ -21,9 +21,24 @@ export default {
   },
 
   longPress(el, time = 700, callback) {
+    let start = { x: 0, y: 0 }
     el.addEventListener('pointerdown', e => {
+      start = { x: e.clientX, y: e.clientY }
       window.hamLongPressTimer = setTimeout(() => { callback(e) }, time)
     });
+
+    el.addEventListener('pointermove', (e) => {
+      const { clientX, clientY } = e;
+
+      const delta = { x: Math.abs(clientX - start.x), y: Math.abs(clientY - start.y) }
+      if (delta.x > 10 || delta.y > 10) {
+
+        clearTimeout(window.hamLongPressTimer)
+      }
+
+      // window.hamLongPressTimer = setTimeout(() => { callback(e) }, time)
+    });
+
     el.addEventListener('pointerup', e => { clearTimeout(window.hamLongPressTimer) })
   },
 
