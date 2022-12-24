@@ -34,7 +34,7 @@ export default {
   },
 
   // @createElement
-  createElement({ tag, templateName, elementProperties, }, ...children) {
+  createElement({ tag, templateName, elementProperties, children}, ...children2) {
     const el = tag ? document.createElement(tag) : template(templateName);
 
     if (!el) return null;
@@ -44,11 +44,21 @@ export default {
     if (dataset) { Object.assign(el.dataset, dataset); }
     if (props) { Object.assign(el, props); }
 
-    for (let child of children) {
+if (children) {
+   for (let child of children) {
       if (typeof child != "string") el.append(...child);
       else el.appendChild(document.createTextNode(child));
     }
 
+} else {
+   for (let child of children2) {
+      if (typeof child != "string") el.append(...child);
+      else el.appendChild(document.createTextNode(child));
+    }
+
+}
+
+   
     return el;
   },
 
