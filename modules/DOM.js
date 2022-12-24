@@ -46,7 +46,7 @@ export default {
 
 if (children) {
    for (let child of children) {
-      if (typeof child != "string") el.append(...child);
+      if (typeof child != "string") el.append(child);
       else el.appendChild(document.createTextNode(child));
     }
 
