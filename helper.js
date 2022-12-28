@@ -1,6 +1,6 @@
 // import { TwoWayMap } from './modules/TwoWayMap.js';
 import H from './hamhelper1.0.0.js'
-const {CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
+const { CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
@@ -25,19 +25,22 @@ document.body.onclick = (e) => {
 const output = DOM.qs('.output')
 // console.log('creating newEl');
 const attributes = {
-  id: 'my-el',
-  classList: ['cool', 'awesome', 'poop'],
-  data: {
-    x: 20,
-    y: 50,
-    groupId: 10,
-    lastChange: 'never'
-  },
-  style: {
-    width: '300px',
-    height: '300px',
-    color: 'white',
-    background: 'blue',
+  tag: 'div',
+  elementProperties: {
+    id: 'my-el',
+    classList: ['cool', 'awesome', 'poop'],
+    data: {
+      x: 20,
+      y: 50,
+      groupId: 10,
+      lastChange: 'never'
+    },
+    style: {
+      width: '300px',
+      height: '300px',
+      color: 'white',
+      background: 'blue',
+    }
   }
 };
 
@@ -128,8 +131,10 @@ const cMap = [
 console.log(chs);
 
 
-const newb = DOM.newElement('div', attributes, els);
-
+const newb = DOM.createElement(attributes);
+newb.style.width = '200px'
+newb.style.height = '200px'
+newb.style.background = 'purple'
 console.log('newb', newb);
 event.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
 

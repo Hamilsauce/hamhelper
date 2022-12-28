@@ -34,31 +34,32 @@ export default {
   },
 
   // @createElement
-  createElement({ tag, templateName, elementProperties, children}, ...children2) {
+  createElement({ tag, templateName, elementProperties, children }, ...children2) {
     const el = tag ? document.createElement(tag) : template(templateName);
 
     if (!el) return null;
 
-    const { dataset, ...props } = elementProperties;
+    const { dataset, classList, ...props } = elementProperties;
 
     if (dataset) { Object.assign(el.dataset, dataset); }
     if (props) { Object.assign(el, props); }
+    if (classList) { Object.assign(el, { classList: Array.isArray(classList) ? classList.join(' ') : classList }); }
 
-if (children) {
-   for (let child of children) {
-      if (typeof child != "string") el.append(child);
-      else el.appendChild(document.createTextNode(child));
+    if (children) {
+      for (let child of children) {
+        if (typeof child != "string") el.append(child);
+        else el.appendChild(document.createTextNode(child));
+      }
+
+    } else {
+      for (let child of children2) {
+        if (typeof child != "string") el.append(...child);
+        else el.appendChild(document.createTextNode(child));
+      }
+
     }
 
-} else {
-   for (let child of children2) {
-      if (typeof child != "string") el.append(...child);
-      else el.appendChild(document.createTextNode(child));
-    }
 
-}
-
-   
     return el;
   },
 
