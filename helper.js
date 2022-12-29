@@ -1,6 +1,25 @@
 // import { TwoWayMap } from './modules/TwoWayMap.js';
+// import { TwoWayMap } from './modules/TwoWayMap.js';
 import H from './hamhelper1.0.0.js'
+import { JsonMap } from './modules/json-map.js';
+import { IndexedMap } from './indexed-map.js';
+
 const { CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
+const jsonmap = new IndexedMap([
+  ['fuck', 'me'],
+  [{ id: 2 }, (i) => null],
+  [0, { id: 3 }],
+  [0, [2, 1, 2]],
+]);
+const jsonmap2 = new JsonMap([
+  ['fuck', 'me'],
+  [{ id: 2 }, (i) => null],
+  [0, { id: 3 }],
+  [0, [2, 1, 2]],
+]);
+const jsonMapJson = JSON.stringify(jsonmap, null, 2)
+const jsonMapJson2 = JSON.stringify(jsonmap2, null, 2)
+console.warn('jsonMapJson', jsonMapJson)
 // import help from './modules/help.js';
 // help('in helperjs line 4')
 // H.help()
@@ -139,6 +158,10 @@ console.log('newb', newb);
 event.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
 
 DOM.qs('#app').appendChild(newb);
+DOM.qs('#app').innerHTML = `
+<pre>${jsonMapJson}</pre>
+<pre>${jsonMapJson2}</pre>
+`
 
 
 

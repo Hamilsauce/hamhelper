@@ -1,6 +1,6 @@
-export class IndexedMap extends Map {
-  #index;
-  
+import { JsonMap } from './modules/json-map.js';
+
+export class IndexedMap extends JsonMap {
   constructor(entries) {
     super(entries);
   }
@@ -36,7 +36,7 @@ export class IndexedMap extends Map {
 
   get #index() { return [...super.keys()] };
   
-  toJSON(){
-    return [...super.entries()]
-  }
+  // toJSON(){
+  //   return [...super.entries()]
+  // }
 }
