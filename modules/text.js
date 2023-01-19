@@ -36,7 +36,7 @@ export default {
         return {
           to(toCaseType = '') {
             if (!(caseTypes.has(toCaseType))) return;
-              
+
           },
         }
       },
@@ -52,28 +52,36 @@ export default {
         .replace('_', '');
     });
   },
-
-
-  kebabToCamel(text, capitalizeFirst = false) {
-    let lastLetterDash = false;
-    if (typeof text === 'string')
-      return [...text.normalize()]
-        .reduce((result, letter, i, arr) => {
-          // if (lastLetterDash) {
-          //   return result;
-          // }
-          if (letter.match(/-/g) && arr[i + 1] !== '-') {
-            lastLetterDash = true;
-            letter = arr[i + 1].toUpperCase()
-          } else if (!letter.match(/-/g) && !lastLetterDash) {
-            lastLetterDash = false;
-            letter = arr[i] //.toLowerCase()
-          }
-
-          return `${result}${letter}`
-          // `${result}${letter.match(/-/g) && arr[i + 1] !== '-' ?  arr[i + 1].toUpperCase()    : letter.match(/[A-Z]/g) ? letter : letter}`
-        }, '');
+  
+  kebabToCamel(text) {
+    return text.replace(/([-\-][a-z])/ig, ($1) => {
+      return $1.toUpperCase()
+        .replace('-', '')
+        .replace('_', '');
+    });
   },
+
+
+  // kebabToCamel(text, capitalizeFirst = false) {
+  //   let lastLetterDash = false;
+  //   if (typeof text === 'string')
+  //     return [...text.normalize()]
+  //       .reduce((result, letter, i, arr) => {
+  //         // if (lastLetterDash) {
+  //         //   return result;
+  //         // }
+  //         if (letter.match(/-/g) && arr[i + 1] !== '-') {
+  //           lastLetterDash = true;
+  //           letter = arr[i + 1].toUpperCase()
+  //         } else if (!letter.match(/-/g) && !lastLetterDash) {
+  //           lastLetterDash = false;
+  //           letter = arr[i] //.toLowerCase()
+  //         }
+
+  //         return `${result}${letter}`
+         
+  //       }, '');
+  // },
 
   replaceMany(text, ...chars) {
     const criteria = ['array', 'string', 'number'].includes(getValueType(chars[0])) ? getValueType(chars[0]) : null;

@@ -4,7 +4,7 @@ import H from './hamhelper1.0.0.js'
 import { JsonMap } from './modules/json-map.js';
 import { IndexedMap } from './indexed-map.js';
 
-const { CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
+const {text, CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
 const jsonmap = new IndexedMap([
   ['fuck', 'me'],
   [{ id: 2 }, (i) => null],
@@ -149,6 +149,11 @@ const cMap = [
 ];
 console.log(chs);
 
+
+const KEBAB = 'game-grid-for-ever';
+const CAMEL = text.kebab2Camel(KEBAB)
+
+console.warn(CAMEL);
 
 const newb = DOM.createElement(attributes);
 newb.style.width = '200px'
