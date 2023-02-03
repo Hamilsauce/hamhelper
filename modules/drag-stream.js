@@ -1,44 +1,59 @@
 import { rxjs } from './rx.js';
-// const rxjs = importUMD('https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js')
 const { fromEvent, delay, of } = rxjs;
-const { takeUntil, takeWhile, switchMap, scan, map, tap, filter, } = rxjs.operators;
+const { distinctUntilChanged, takeUntil, takeWhile, switchMap, scan, map, tap, filter, } = rxjs.operators;
+
+export const createDragEvent$ = (event) => {
+  return of(event).pipe(
+    map(({ target, clientX, clientY, type }) => ({ type, target, x: clientX, y: clientY })),
+    scan((prev, { target, type, x, y }) => {
+      return { type, target, x, y, }
+    }, { type: null, target: null, x: 0, y: 0 }),
+  );
+}
+
 
 export const addDragAction = (target, callback) => {
-  let isDragging = false
-  const setDragState = (state = true) => { isDragging = state; return isDragging };
-
   const pointerdown$ = fromEvent(target, 'pointerdown')
   const pointermove$ = fromEvent(target, 'pointermove')
   const pointerup$ = fromEvent(target, 'pointerup')
 
-  const longpress$ = pointerdown$
-    .pipe(
-      filter(() => isDragging === false),
-      switchMap(event => of (event).pipe(
-        delay(300),
-        takeUntil(pointerup$),
-      ))
-    );
+  target.style.touchAction = 'none';
 
-  return longpress$.pipe(
-    tap(() => setDragState(true)),
-    switchMap(() => pointermove$
-      .pipe(
-        takeWhile(() => isDragging),
-        map(({ target, clientX, clientY }) => ({ target: target.closest('.context-menu'), x: clientX, y: clientY })),
-        scan((prev, { target, x, y }) => {
-          return !!prev ? {
-            target,
-            x: (prev.x + -(prev.x - x)),
-            y: (prev.y + -(prev.y - y)),
-          } : { target, x: x, y: y, }
-        }),
-        tap(callback),
-        switchMap(() => pointerup$
-          .pipe(
-            map(({ target, clientX, clientY }) => ({ target, x: clientX, y: clientY })),
-            tap(() => setDragState(false)),
-          ))
-      ))
+  const dragStart$ = pointerdown$.pipe(
+    distinctUntilChanged((a, b) => a.type !== b.type),
+    switchMap(createDragEvent$),
+    tap(callback),
   );
+
+  const dragMove$ = pointermove$.pipe(
+    switchMap(createDragEvent$),
+    tap(callback),
+  );
+
+  const dragEnd$ = pointerup$.pipe(
+    distinctUntilChanged((a, b) => a.type === b.type),
+    switchMap(createDragEvent$),
+    tap(callback),
+  );
+
+  return dragStart$.pipe(
+    switchMap(() => dragMove$.pipe(
+      switchMap(() => dragEnd$)
+    ))
+  )
+
+  // return dragStart$.pipe(
+  //   tap(() => setDragState(true)),
+  //   switchMap(() => pointermove$.pipe(
+  //     switchMap(createDragEvent$),
+  //     tap(callback),
+  //     switchMap(() => pointerup$
+  //       .pipe(
+  //         switchMap(createDragEvent$),
+  //         // map(({ target, clientX, clientY }) => ({ target, x: clientX, y: clientY })),
+  //         tap(callback),
+  //         tap(() => setDragState(false)), !''
+  //       ))
+  //   ))
+  // );
 };

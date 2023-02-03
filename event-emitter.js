@@ -10,8 +10,6 @@ export class EventEmitter extends EventTarget {
 
   constructor() {
     super();
-
-    // this.#listeners = [];
   }
 
   #registerEvent(eventName) {

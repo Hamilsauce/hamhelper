@@ -2,9 +2,10 @@
 // import { TwoWayMap } from './modules/TwoWayMap.js';
 import H from './hamhelper1.0.0.js'
 import { JsonMap } from './modules/json-map.js';
+import { addDragAction } from './modules/drag-stream.js';
 import { IndexedMap } from './indexed-map.js';
 
-const {text, CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
+const { text, CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
 const jsonmap = new IndexedMap([
   ['fuck', 'me'],
   [{ id: 2 }, (i) => null],
@@ -151,9 +152,9 @@ console.log(chs);
 
 
 const KEBAB = 'game-grid-for-ever';
-const CAMEL = text.kebab2Camel(KEBAB)
+// const CAMEL = text.kebab2Camel(KEBAB)
 
-console.warn(CAMEL);
+// console.warn(CAMEL);
 
 const newb = DOM.createElement(attributes);
 newb.style.width = '200px'
@@ -168,12 +169,52 @@ DOM.qs('#app').innerHTML = `
 <pre>${jsonMapJson2}</pre>
 `
 
+let opacityModifier = 0
+
+const drag$ = addDragAction(DOM.qs('#app'), e => {
+console.log('e', e);
+  const points = e.target.querySelectorAll('.point')
+
+  if (points.length >= 50) {
+    [...points][0].remove()
+  }
+
+  const el = document.createElement('div');
+
+  if (e.type === 'pointerdown') {
+    opacityModifier = 0;
+
+    DOM.qsa('.point-end').forEach((el, i) => {
+      el.remove()
+    });
+
+    el.classList.add('point-start')
+  }
+
+  if (e.type === 'pointermove') {
+    opacityModifier++
+    el.classList.add('point')
+  const opacity = 1 - ((opacityModifier / 100) * 1)//+(-50+ points.length))
+  el.style.opacity = opacity
+    
+  }
+
+  if (e.type === 'pointerup') {
+    DOM.qsa('.point-start').forEach((el, i) => {
+      el.remove()
+    });
+    el.classList.add('point-end')
+  }
+  // if (points.length) {
+  //   el.classList.add('point-end')
+  // }
+  el.style.top = e.y + 'px'
+  el.style.left = e.x + 'px'
+  e.target.append(el)
+})
 
 
-
-
-
-
+drag$.subscribe()
 // const myEl = H.createNewElement('div','my-el', ['fap', 'fap-two', 'fap-3'],{selected: false, roll: 'king'})
 // myEl.textContent = 'oooo'
 // output.appendChild(myEl)
