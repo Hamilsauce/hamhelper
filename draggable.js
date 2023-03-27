@@ -39,8 +39,8 @@ export const draggable = (parent, element) => {
 
     fireEvent('dragstart');
 
-    el.addEventListener('pointermove', elMove, true);
-    el.addEventListener('pointerup', finishMove, true);
+    svg.addEventListener('pointermove', elMove, true);
+    svg.addEventListener('pointerup', finishMove, true);
   }
 
   function elMove(evt) {
@@ -74,8 +74,8 @@ export const draggable = (parent, element) => {
 
   return () => {
     el.removeEventListener('pointerdown', startMove, false);
-    el.removeEventListener('pointermove', elMove, true);
-    el.removeEventListener('pointerup', finishMove, true);
+    svg.removeEventListener('pointermove', elMove, true);
+    svg.removeEventListener('pointerup', finishMove, true);
     fireEvent('removedrag');
   }
 }
