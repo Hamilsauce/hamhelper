@@ -39,6 +39,7 @@ export const draggable = (parent, element) => {
 
     fireEvent('dragstart');
 
+    svg.removeEventListener('pointerdown', startMove, false);
     svg.addEventListener('pointermove', elMove, true);
     svg.addEventListener('pointerup', finishMove, true);
   }
@@ -54,8 +55,8 @@ export const draggable = (parent, element) => {
   }
 
   function finishMove(evt) {
-    svg.removeEventListener('pointerup', finishMove, false);
-    svg.removeEventListener('pointermove', elMove, false);
+    svg.removeEventListener('pointerup', finishMove, true);
+    svg.removeEventListener('pointermove', elMove, true);
     fireEvent('dragend');
   }
 
