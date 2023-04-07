@@ -15,28 +15,28 @@ export const draggable = (parent, element) => {
   };
 
   while (svg && svg.tagName != 'svg') svg = svg.parentNode;
-  
+
   const pt = svg.createSVGPoint();
   const doc = svg.ownerDocument;
-  const transforms = el.transform.baseVal;
+  const xforms = el.transform.baseVal;
   const root = doc.rootElement || doc.body || svg;
- 
-  let translation, translateStartX, translateStartY, pointerStart;
- 
+
+  let xlate, txStartX, txStartY, pointerStart;
+
 
   el.addEventListener('pointerdown', startMove, false);
 
   function startMove(evt) {
 
-    translation = transforms.numberOfItems > 0 && transforms.getItem(0);
-    
-    if (!translation || translation.type != SVGTransform.SVG_TRANSFORM_TRANSLATE) {
-      translation = transforms.createSVGTransformFromMatrix(svg.createSVGMatrix());
-      transforms.insertItemBefore(translation, 0);
+    xlate = xforms.numberOfItems > 0 && xforms.getItem(0);
+
+    if (!xlate || xlate.type != SVGTransform.SVG_TRANSFORM_TRANSLATE) {
+      xlate = xforms.createSVGTransformFromMatrix(svg.createSVGMatrix());
+      xforms.insertItemBefore(xlate, 0);
     }
 
-    translateStartX = translation.matrix.e;
-    translateStartY = translation.matrix.f;
+    txStartX = xlate.matrix.e;
+    txStartY = xlate.matrix.f;
 
     pointerStart = inElementSpace(evt);
 
@@ -49,9 +49,9 @@ export const draggable = (parent, element) => {
 
   function elMove(evt) {
     const point = inElementSpace(evt);
-    translation.setTranslate(
-      translateStartX + point.x - pointerStart.x,
-      translateStartY + point.y - pointerStart.y
+    xlate.setTranslate(
+      txStartX + point.x - pointerStart.x,
+      txStartY + point.y - pointerStart.y
     );
 
     fireEvent('drag');
@@ -65,7 +65,7 @@ export const draggable = (parent, element) => {
 
   function fireEvent(eventName) {
     const event = new Event(eventName);
-    event.detail = { x: translation.matrix.e, y: translation.matrix.f, target: el };
+    event.detail = { x: xlate.matrix.e, y: xlate.matrix.f, target: el };
     return svg.dispatchEvent(event);
   }
 

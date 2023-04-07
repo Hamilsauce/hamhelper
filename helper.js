@@ -4,34 +4,59 @@ import H from './hamhelper1.0.0.js'
 import { JsonMap } from './modules/json-map.js';
 import { addDragAction } from './modules/drag-stream.js';
 import { IndexedMap } from './indexed-map.js';
+// import { delay } from './modules/delay.js';
 
-const { text, CONSTANTS, timer, TwoWayMap, DOM, event, array, help } = H
+const {
+  delay,
+  text,
+  CONSTANTS,
+  timer,
+  TwoWayMap,
+  DOM,
+  event,
+  array,
+  help
+} = H
+
+
+console.group('DELAY');
+
+await delay(1500);
+console.log('0 delay 1500');
+
+await delay(1500);
+console.log('1 delay 1500');
+
+await delay(1500);
+console.log('2 delay 1500');
+await delay(1500);
+console.log('3 delay 1500');
+
+await delay(1500);
+console.log('4 delay 1500');
+
+await delay(1500);
+console.log('5 delay 1500');
+console.groupEnd('DELAY');
+
 const jsonmap = new IndexedMap([
   ['fuck', 'me'],
   [{ id: 2 }, (i) => null],
   [0, { id: 3 }],
   [0, [2, 1, 2]],
 ]);
+
 const jsonmap2 = new JsonMap([
   ['fuck', 'me'],
   [{ id: 2 }, (i) => null],
   [0, { id: 3 }],
   [0, [2, 1, 2]],
 ]);
+
 const jsonMapJson = JSON.stringify(jsonmap, null, 2)
 const jsonMapJson2 = JSON.stringify(jsonmap2, null, 2)
 console.warn('jsonMapJson', jsonMapJson)
-// import help from './modules/help.js';
-// help('in helperjs line 4')
-// H.help()
-// help('sux')
-// timer.start();
-console.log(CONSTANTS.ALPHABET);
 
-// setInterval(() => {
-//   timer.logTime()
-//   console.log('', );
-// }, 1000)
 
 event.selectAllContent(document.querySelector('.log'))
 
@@ -172,7 +197,7 @@ DOM.qs('#app').innerHTML = `
 let opacityModifier = 0
 
 const drag$ = addDragAction(DOM.qs('#app'), e => {
-console.log('e', e);
+  console.log('e', e);
   const points = e.target.querySelectorAll('.point')
 
   if (points.length >= 50) {
@@ -194,9 +219,9 @@ console.log('e', e);
   if (e.type === 'pointermove') {
     opacityModifier++
     el.classList.add('point')
-  const opacity = 1 - ((opacityModifier / 100) * 1)//+(-50+ points.length))
-  el.style.opacity = opacity
-    
+    const opacity = 1 - ((opacityModifier / 100) * 1) //+(-50+ points.length))
+    el.style.opacity = opacity
+
   }
 
   if (e.type === 'pointerup') {
@@ -218,3 +243,4 @@ drag$.subscribe()
 // const myEl = H.createNewElement('div','my-el', ['fap', 'fap-two', 'fap-3'],{selected: false, roll: 'king'})
 // myEl.textContent = 'oooo'
 // output.appendChild(myEl)
+

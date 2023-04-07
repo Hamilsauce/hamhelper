@@ -1,7 +1,6 @@
-/* Last updated: 02/22/22 */
+/* Last updated: 04/07/23 */
 
-import
-{
+import {
   dom,
   date,
   array,
@@ -20,9 +19,16 @@ import
   importUMD,
   rxjs,
   timer,
+  delay,
 } from './modules/index.js';
 
 export default class HamHelper {
+
+  /* @ DELAY */
+  static get delay() {
+    return delay
+
+  }
 
   /* @ PIPELINE */
   static get pipeline() { return pipe }
