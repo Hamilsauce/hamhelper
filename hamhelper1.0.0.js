@@ -19,14 +19,14 @@ import {
   importUMD,
   rxjs,
   timer,
-  delay,
+  waitMs,
 } from './modules/index.js';
 
 export default class HamHelper {
 
-  /* @ DELAY */
-  static get delay() {
-    return delay
+  /* @ waitMs */
+  static get waitMs() {
+    return waitMs
 
   }
 

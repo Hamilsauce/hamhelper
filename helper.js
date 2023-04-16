@@ -4,10 +4,10 @@ import H from './hamhelper1.0.0.js'
 import { JsonMap } from './modules/json-map.js';
 import { addDragAction } from './modules/drag-stream.js';
 import { IndexedMap } from './indexed-map.js';
-// import { delay } from './modules/delay.js';
+// import { waitMs } from './modules/waitMs.js';
 
 const {
-  delay,
+  waitMs,
   text,
   CONSTANTS,
   timer,
@@ -19,25 +19,25 @@ const {
 } = H
 
 
-console.group('DELAY');
+console.group('waitMs');
 
-await delay(1500);
-console.log('0 delay 1500');
+await waitMs(1500);
+console.log('0 waitMs 1500');
 
-await delay(1500);
-console.log('1 delay 1500');
+await waitMs(1500);
+console.log('1 waitMs 1500');
 
-await delay(1500);
-console.log('2 delay 1500');
-await delay(1500);
-console.log('3 delay 1500');
+await waitMs(1500);
+console.log('2 waitMs 1500');
+await waitMs(1500);
+console.log('3 waitMs 1500');
 
-await delay(1500);
-console.log('4 delay 1500');
+await waitMs(1500);
+console.log('4 waitMs 1500');
 
-await delay(1500);
-console.log('5 delay 1500');
-console.groupEnd('DELAY');
+await waitMs(1500);
+console.log('5 waitMs 1500');
+console.groupEnd('waitMs');
 
 const jsonmap = new IndexedMap([
   ['fuck', 'me'],
