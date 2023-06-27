@@ -18,7 +18,10 @@ const {
   help
 } = H
 
+const notesUrl = 'https://raw.githubusercontent.com/Hamilsauce/hamhelper/main/data/musical-notes.json'
 
+const musicNotes = await (await fetch(notesUrl)).json()
+console.log(musicNotes);
 console.group('waitMs');
 
 await waitMs(1500);
