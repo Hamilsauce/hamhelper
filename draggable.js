@@ -6,8 +6,8 @@
 */
 
 export const draggable = (parent, element) => {
-  const svg = parent;
-  const el = element;
+  let svg = parent;
+  let el = element;
 
   if (!(svg instanceof SVGElement && el instanceof Element)) {
     console.error('Draggable parent not an SVG element or target not an element');
