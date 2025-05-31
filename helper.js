@@ -15,7 +15,7 @@ const {
   DOM,
   event,
   array,
-  help
+  help,
 } = H
 
 const notesUrl = 'https://raw.githubusercontent.com/Hamilsauce/hamhelper/main/data/musical-notes.json'

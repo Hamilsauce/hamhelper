@@ -16,6 +16,7 @@ import {
   object,
   templater,
   addDragAction,
+  addSvgPinchZoom,
   importUMD,
   rxjs,
   timer,
@@ -23,25 +24,29 @@ import {
 } from './modules/index.js';
 
 export default class HamHelper {
-
+  
   /* @ waitMs */
   static get waitMs() {
     return waitMs
-
   }
-
+  
+  /* @ addSvgPinchZoom */
+  static get addSvgPinchZoom() {
+    return addSvgPinchZoom
+  }
+  
   /* @ PIPELINE */
   static get pipeline() { return pipe }
-
+  
   /* @ IMPORT UMD MODULE EXPORTS */
   static get importUMD() { return importUMD }
-
+  
   /* @ RXJS LIBRARY MODULE */
   static get rxjs() { return rxjs }
-
+  
   /* @ TIME LOGGER MODULE */
   static get timer() { return timer }
-
+  
   /* @ CONSTANTS */
   static get CONSTANTS() {
     return {
@@ -51,46 +56,46 @@ export default class HamHelper {
       ).map(x => String.fromCharCode(x)),
     }
   }
-
+  
   /* @ JSON */
   static get json() { return json }
-
+  
   /* @ RXJS addDragAction */
   static get addDragAction() { return addDragAction }
-
+  
   /* @ Templater */
   static get template() { return templater }
-
+  
   /* @ object */
   static get object() { return object }
-
+  
   /* @ log */
   static get log() { return log }
-
+  
   /* @ TwoWayMap */
   static get TwoWayMap() { return twoWayMap }
-
+  
   /* @ CSVTOJSON */
   static get csvToJson() { return c2j }
-
+  
   /* @ DOM */
   static get DOM() { return dom }
-
+  
   /* TODO ERROR    @ TEXT */
   static get text() { return text }
-
+  
   /* @ DATE */
   static get date() { return date }
-
+  
   /* @ ARRAY */
   static get array() { return array }
-
+  
   /* @ EVENT */
   static get event() { return event }
-
+  
   /* @ UTIL */
   static get utils() { return utils }
-
+  
   /* @ DOWNLOAD */
   static download(filename, text) {
     const element = document.createElement('a');
@@ -101,17 +106,17 @@ export default class HamHelper {
     element.click();
     document.body.removeChild(element);
   }
-
-
+  
+  
   /* @ HELP */
   static get help() {
     const { help } = helpObj;
     return help;
   }
-
+  
   /* @ MAP */
   static mapFromObject(obj) { return new Map(Object.entries(obj)) }
-
+  
   /* @ ASYNC */
   static async asyncFetchMap(sources) {
     // console.log(sources);
@@ -121,22 +126,26 @@ export default class HamHelper {
         return { key: name, data: await response.json() }
       }))
   };
-
+  
   /* @ ASYNC */
   static async asyncReduce({ collectionName, sources }) {
     return (await fetchCollectionSources(sources))
       .reduce((acc, { key, data }, i) => {
         acc.get(collectionName).set(
           key,
-          new Map([[key, [...Object.entries({ ...data })]]])
+          new Map([
+            [key, [...Object.entries({ ...data })]]
+          ])
         );
         return acc;
-      }, new Map([[collectionName, new Map()]]));
+      }, new Map([
+        [collectionName, new Map()]
+      ]));
   };
-
+  
   /* @ OBJECT */
   static isObjectEmpty(obj) { return Object.keys(obj).length === 0 }
-
+  
   /* @ OBJECT */
   static arrayFromObjectProperties(obj, propName = 'propertyName') {
     return Object.entries(obj)
@@ -145,7 +154,7 @@ export default class HamHelper {
         return [...acc, { ...value }]
       }, [])
   }
-
+  
   getValueType(target, deepTest = false, customClassType = null) {
     // TODO Work on params
     if (target === null) return 'null';
@@ -167,7 +176,7 @@ function elt(name, attrs, ...children) {
     dom.setAttribute(attr, attrs[attr]);
   }
   for (let child of children) {
-
+    
     dom.appendChild(child);
   }
   return dom;

@@ -1,8 +1,11 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
-const { rx, DOM,TwoWayMap, event, date, array, utils, pipeline, text, help} = ham;
-
+const { rx, DOM, TwoWayMap, event, date, array, utils, pipeline, text, help } = ham;
+import ham2 from './hamhelper1.0.0.js'
+const {addSvgPinchZoom} = ham2
 console.time('timer1')
 
+console.warn('addSvgPinchZoom', addSvgPinchZoom)
+addSvgPinchZoom()
 // import H from './hamhelper1.0.0.js'
 import { pipe } from './modules/pipeline.js';
 // import { TwoWayMap } from './modules/TwoWayMap.js';
@@ -17,21 +20,27 @@ const poop = 'kebab-case'
 // console.log('camelToKebab', text.camelToKebab(poop));
 // console.log('kebabToCamel', text.kebabToCamel(poop));
 
-console.group(new TwoWayMap([[1, '1']]));
-console.table(new TwoWayMap([[1, '1']]));
-console.dir(new TwoWayMap([[1, '1']]));
+console.group(new TwoWayMap([
+  [1, '1']
+]));
+console.table(new TwoWayMap([
+  [1, '1']
+]));
+console.dir(new TwoWayMap([
+  [1, '1']
+]));
 const app = document.querySelector('#app');
 const targ = document.querySelectorAll('.targ')
 const footer = document.querySelector('.container')
 
 
-  DOM.setElementDataset(app, {
-    name:'app', 
-    isCool: true,
-    numberOfShit: 23.5,
-    
-  })
-  console.warn('app getdataset',[...DOM.getElementDataset(app)])
+DOM.setElementDataset(app, {
+  name: 'app',
+  isCool: true,
+  numberOfShit: 23.5,
+  
+})
+console.warn('app getdataset', [...DOM.getElementDataset(app)])
 console.log('app.dataset', app.dataset)
 app.addEventListener('click', e => {
   // const res = event.testEventPathForElement(e, targ)
@@ -63,9 +72,9 @@ console.log('am', numToTextPipe(0))
 const freq = (arr) => {
   // const map = new Map()
   const freqMap = arr.reduce((map, curr, i) => {
-
+    
     if (map.has(curr)) {
-      map.set(curr, map.get(curr)++)
+      map.set(curr, map.get(curr) ++)
     } else {
       map.set(curr, 1)
       
@@ -73,6 +82,6 @@ const freq = (arr) => {
   }, new Map());
 }
 const seed = [
-'5', 
-
+  '5',
+  
 ]

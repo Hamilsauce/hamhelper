@@ -1,4 +1,6 @@
-export const addPinchZoom = (svg) => {
+export const addSvgPinchZoom = (svg) => {
+  if (!svg || !svg.viewBox) throw new Error('PinchZoom Fail: Not an SVG Element/no viewbox')
+  
   const originalSvgOrigin = {
     x: svg.viewBox.baseVal.x,
     y: svg.viewBox.baseVal.y,

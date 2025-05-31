@@ -17,3 +17,4 @@ export { default as importUMD } from './import-umd.js';
 export { rxjs } from './rx.js';
 export { timer } from './timer.js';
 export { waitMs } from './wait-ms.js';
+export { addSvgPinchZoom } from './svg-pinch-zoom.js'
