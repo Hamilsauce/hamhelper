@@ -1,11 +1,11 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
-const { rx, DOM, TwoWayMap, event, date, array, utils, pipeline, text, help } = ham;
+const { waitMs, rx, DOM, TwoWayMap, event, date, array, utils, pipeline, text, help } = ham;
 import ham2 from './hamhelper1.0.0.js'
 const {addSvgPinchZoom} = ham2
 console.time('timer1')
 
-console.warn('addSvgPinchZoom', addSvgPinchZoom)
-addSvgPinchZoom()
+console.warn('waitMs', waitMs)
+waitMs()
 // import H from './hamhelper1.0.0.js'
 import { pipe } from './modules/pipeline.js';
 // import { TwoWayMap } from './modules/TwoWayMap.js';

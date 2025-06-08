@@ -21,6 +21,7 @@ import {
   rxjs,
   timer,
   waitMs,
+  sleep,
 } from './modules/index.js';
 
 export default class HamHelper {
@@ -28,6 +29,11 @@ export default class HamHelper {
   /* @ waitMs */
   static get waitMs() {
     return waitMs
+  }
+  
+  /* @ sleep */
+  static get sleep() {
+    return sleep
   }
   
   /* @ addSvgPinchZoom */
