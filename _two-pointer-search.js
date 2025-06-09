@@ -1,7 +1,7 @@
 let dataUrl = '../data/FOLDERPATHS.json'
 
 
-let targetName = 'Sibelius';
+let targetName = 'macro-output';
 let targetPath = [
   '003 Music Exchange (Shared Projects)',
   '.VSTs. DAWS, SOFTWARE',
@@ -21,11 +21,12 @@ function onePointerSearch(collection, criteria) {
 }
 
 function twoPointerSearch(collection, criteria) {
-  let left = 0,
-    right = collection.length - 1;
-
+  let left = 0;
+  let right = collection.length - 1;
+  
   while (left < right) {
     const curr = [collection[left], collection[right]]
+    
     if (curr[0].Folder === criteria.targetName) {
       return {
         index: left,
@@ -33,14 +34,15 @@ function twoPointerSearch(collection, criteria) {
         path: curr[0].FolderPath.join('\\')
       }
     }
-
+    
     if (curr[1].Folder === criteria.targetName) {
-      return { 
+      return {
         index: right,
-        pointer: 'right', 
-        path: curr[1].FolderPath.join('\\') }
+        pointer: 'right',
+        path: curr[1].FolderPath.join('\\')
+      }
     }
-
+    
     right--;
     left++;
   }
@@ -91,11 +93,11 @@ function twoPointerSum(arr, target) {
 
 
 
-// console.table([onePointerSum([-5, -3, 1, 10], 7), twoPointerSum([-5, -3, 1, 10], 7)]);
+console.table([onePointerSum([-5, -3, 1, 10], 7), twoPointerSum([-5, -3, 1, 10], 7)]);
 // [-3, 10] // (10 - 3 = 7)
-// console.table([onePointerSum([-5, -3, -1, 1, 2], 30), twoPointerSum([-5, -3, -1, 1, 2], 30)]);
+console.table([onePointerSum([-5, -3, -1, 1, 2], 30), twoPointerSum([-5, -3, -1, 1, 2], 30)]);
 // [] // no 2 numbers add up to 30
-// console.table([onePointerSum([-3, -2, -1, 1, 1, 3, 4], -4), twoPointerSum([-3, -2, -1, 1, 1, 3, 4], -4)]);
+console.table([onePointerSum([-3, -2, -1, 1, 1, 3, 4], -4), twoPointerSum([-3, -2, -1, 1, 1, 3, 4], -4)]);
 // [-3, -1] // (-3 -1 = -4)
 
 
@@ -105,6 +107,6 @@ function twoPointerSum(arr, target) {
 // console.timeEnd('onePointerSum')
 
 
-// console.time('twoPointerSum')
-// twoPointerSum([-3, -2, -1, 1, 1, 3, 4], -4)
-// console.timeEnd('twoPointerSum')
+console.time('twoPointerSum')
+twoPointerSum([-3, -2, -1, 1, 1, 3, 4], -4)
+console.timeEnd('twoPointerSum')

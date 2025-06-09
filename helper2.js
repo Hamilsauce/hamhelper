@@ -2,10 +2,10 @@ import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 const { waitMs, rx, DOM, TwoWayMap, event, date, array, utils, pipeline, text, help } = ham;
 import ham2 from './hamhelper1.0.0.js'
 const {addSvgPinchZoom} = ham2
-console.time('timer1')
-
-console.warn('waitMs', waitMs)
-waitMs()
+// console.time('timer1')
+import './_two-pointer-search.js';
+// console.warn('waitMs', waitMs)
+// waitMs()
 // import H from './hamhelper1.0.0.js'
 import { pipe } from './modules/pipeline.js';
 // import { TwoWayMap } from './modules/TwoWayMap.js';
@@ -13,22 +13,22 @@ import { pipe } from './modules/pipeline.js';
 // console.log('H.help()', H.help())
 
 // const { DOM,TwoWayMap, event, date, array, utils, pipeline, text, help } = H;
-console.log({ pipeline });
+// console.log({ pipeline });
 
 const poop = 'kebab-case'
 // console.log('poop.split(/^[A-Z]*$/)', poop.split(/[A-Z]/g)) 
 // console.log('camelToKebab', text.camelToKebab(poop));
 // console.log('kebabToCamel', text.kebabToCamel(poop));
 
-console.group(new TwoWayMap([
-  [1, '1']
-]));
-console.table(new TwoWayMap([
-  [1, '1']
-]));
-console.dir(new TwoWayMap([
-  [1, '1']
-]));
+// console.group(new TwoWayMap([
+//   [1, '1']
+// ]));
+// console.table(new TwoWayMap([
+//   [1, '1']
+// ]));
+// console.dir(new TwoWayMap([
+//   [1, '1']
+// ]));
 const app = document.querySelector('#app');
 const targ = document.querySelectorAll('.targ')
 const footer = document.querySelector('.container')
@@ -40,11 +40,11 @@ DOM.setElementDataset(app, {
   numberOfShit: 23.5,
   
 })
-console.warn('app getdataset', [...DOM.getElementDataset(app)])
-console.log('app.dataset', app.dataset)
+// console.warn('app getdataset', [...DOM.getElementDataset(app)])
+// console.log('app.dataset', app.dataset)
 app.addEventListener('click', e => {
   // const res = event.testEventPathForElement(e, targ)
-  console.log('akut');
+  // console.log('akut');
   // console.log('res', res)
 })
 
@@ -59,7 +59,7 @@ const numToTextPipe = pipeline(
   (num) => `Number ${num} is big time!`
 );
 
-console.log('am', numToTextPipe(0))
+// console.log('am', numToTextPipe(0))
 // => 'Number 100 is big time!'
 
 
