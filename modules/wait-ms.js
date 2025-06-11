@@ -1,7 +1,7 @@
 export const waitMs = (
   time = 500,
   cb = () => {},
-) => new Promise(res => {
+) => new Promise(resolve => {
   setTimeout(() => { resolve(cb()); }, time);
 });
 
