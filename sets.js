@@ -50,8 +50,8 @@ const setA = new Set([1, 2, 3, 4])
 const setB = new Set([2, 3])
 const setC = new Set([3, 4, 5, 6])
 
-isSuperset(setA, setB)          // returns true
-union(setA, setC)               // returns Set {1, 2, 3, 4, 5, 6}
-intersection(setA, setC)        // returns Set {3, 4}
+isSuperset(setA, setB) // returns true
+union(setA, setC) // returns Set {1, 2, 3, 4, 5, 6}
+intersection(setA, setC) // returns Set {3, 4}
 symmetricDifference(setA, setC) // returns Set {1, 2, 5, 6}
-difference(setA, setC)          // returns Set {1, 2}
+difference(setA, setC) // returns Set {1, 2}
