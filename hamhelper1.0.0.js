@@ -16,6 +16,7 @@ import {
   object,
   templater,
   addDragAction,
+  addPanAction,
   addSvgPinchZoom,
   importUMD,
   rxjs,
@@ -39,6 +40,11 @@ export default class HamHelper {
   /* @ addSvgPinchZoom */
   static get addSvgPinchZoom() {
     return addSvgPinchZoom
+  }
+  
+  /* @ addPanAction    */
+  static get addPanAction() {
+    return addPanAction
   }
   
   /* @ PIPELINE */

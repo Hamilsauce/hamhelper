@@ -18,3 +18,4 @@ export { rxjs } from './rx.js';
 export { timer } from './timer.js';
 export { waitMs, sleep } from './wait-ms.js';
 export { addSvgPinchZoom } from './svg-pinch-zoom.js'
+export { addPanAction } from './pan-viewport.js'
