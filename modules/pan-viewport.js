@@ -1,5 +1,3 @@
-// import { domPoint } from './utils.js';
-
 const domPoint = (element, x, y) => {
   return new DOMPoint(x, y).matrixTransform(
     element.getScreenCTM().inverse()
@@ -15,7 +13,7 @@ const createPanEvent = ({ svg, target, clientX, clientY } = new PointerEvent()) 
   return domPoint((target ? target : svg), clientX, clientY);
 };
 
-const calculateOrigimDelta = ({ viewBox, x, y, clientY } = new PointerEvent()) => {
+const calculateOriginDelta = ({ viewBox, x, y, clientY } = new PointerEvent()) => {
   return domPoint((target ? target : svg), clientX, clientY);
 };
 
@@ -61,6 +59,8 @@ export const addPanAction = (svg, callback) => {
         e.preventDefault();
         e.stopPropagation();
       }),
+      filter(e => e.target instanceof SVGGraphicsElement),
+
       // exhaustMap(value => {
       //   return multitouch$; // this must complete for next `value` to be considered
       // }),
@@ -84,6 +84,8 @@ export const addPanAction = (svg, callback) => {
       exhaustMap(value => {
         return touchend$; // this must complete for next `value` to be considered
       }),
+      filter(e => e.target instanceof SVGGraphicsElement),
+
       map(createPanEvent),
       map(({ x, y }) => {
         return {
