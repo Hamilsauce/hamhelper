@@ -46,6 +46,7 @@ export const addPanAction = (svg, callback) => {
         e.preventDefault();
         e.stopPropagation();
       }),
+      filter(e => e.target instanceof SVGGraphicsElement),
       // exhaustMap(value => {
       //   return touchstart$; // this must complete for next `value` to be considered
       // }),
