@@ -1,5 +1,5 @@
 import { rxjs } from '../modules/rx.js';
-console.warn('rxjs', rxjs)
+
 const domPoint = (element, x, y) => {
   return new DOMPoint(x, y).matrixTransform(
     element.getScreenCTM().inverse()
