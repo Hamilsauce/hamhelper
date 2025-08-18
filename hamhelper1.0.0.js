@@ -2,6 +2,7 @@
 
 import {
   dom,
+  svg,
   date,
   array,
   text,
@@ -92,6 +93,9 @@ export default class HamHelper {
   
   /* @ DOM */
   static get DOM() { return dom }
+  
+  /* @ SVG */
+  static get SVG() { return svg }
   
   /* TODO ERROR    @ TEXT */
   static get text() { return text }

@@ -1,3 +1,4 @@
+export { default as svg } from './svg.js';
 export { default as dom } from './DOM.js';
 export { default as date } from './date.js';
 export { default as array } from './array.js';
