@@ -8,6 +8,7 @@ import './_two-pointer-search.js';
 // waitMs()
 // import H from './hamhelper1.0.0.js'
 import { pipe } from './modules/pipeline.js';
+import { addPanAction } from './modules/pan-viewport.js';
 import { EventEmitter } from './event-emitter.js';
 // import { TwoWayMap } from './modules/TwoWayMap.js';
 // import rx from './modules/rxjs.js'

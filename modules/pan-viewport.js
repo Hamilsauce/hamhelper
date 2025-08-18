@@ -1,3 +1,5 @@
+import { rxjs } from '../modules/rx.js';
+console.warn('rxjs', rxjs)
 const domPoint = (element, x, y) => {
   return new DOMPoint(x, y).matrixTransform(
     element.getScreenCTM().inverse()
@@ -36,7 +38,7 @@ export const addPanAction = (svg, callback) => {
       map(x => x),
       // tap(e => console.log('multitouch$'))
     )
-    // .subscribe()
+  // .subscribe()
   
   const pointerdown$ = fromEvent(svg, 'pointerdown')
     .pipe(
@@ -60,7 +62,7 @@ export const addPanAction = (svg, callback) => {
         e.stopPropagation();
       }),
       filter(e => e.target instanceof SVGGraphicsElement),
-
+      
       // exhaustMap(value => {
       //   return multitouch$; // this must complete for next `value` to be considered
       // }),
@@ -85,7 +87,7 @@ export const addPanAction = (svg, callback) => {
         return touchend$; // this must complete for next `value` to be considered
       }),
       filter(e => e.target instanceof SVGGraphicsElement),
-
+      
       map(createPanEvent),
       map(({ x, y }) => {
         return {
