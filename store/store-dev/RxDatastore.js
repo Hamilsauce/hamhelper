@@ -1,9 +1,8 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
-import localStore from './localStore.js'
-const { date, array, utils, text } = ham;
-const { iif, BehaviorSubject, ReplaySubject, AsyncSubject, Subject, interval, of , fromEvent, merge, empty, delay, from } = rxjs;
-const { distinctUntilChanged, throttleTime, mergeMap, switchMap, scan, take, takeWhile, map, tap, startWith, filter, mapTo } = rxjs.operators;
-// const { fromFetch } = rxjs.fetch;
+import localStore from './localStore.js';
+const { utils } = ham;
+const { BehaviorSubject } = rxjs;
+const { distinctUntilChanged, scan, map, tap } = rxjs.operators;
 let localStore1 = localStore
 
 export class RxDatastore {
@@ -80,7 +79,7 @@ export class RxDatastore {
       set: update(coll$),
       remove: remove(coll$),
     }).get(collName)
-    
+
     return this.connections.get(collName)
 
   }
