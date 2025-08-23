@@ -1,20 +1,133 @@
 // import { getElementDataset, coerceData } from './get-element-data.js'
 import template from './templater.js';
+
+export const DomEventMap = new Map([
+  // Mouse Events
+  ['click', MouseEvent],
+  ['dblclick', MouseEvent],
+  ['mousedown', MouseEvent],
+  ['mouseup', MouseEvent],
+  ['mousemove', MouseEvent],
+  ['mouseenter', MouseEvent],
+  ['mouseleave', MouseEvent],
+  ['mouseover', MouseEvent],
+  ['mouseout', MouseEvent],
+  ['contextmenu', MouseEvent],
+  ['wheel', WheelEvent],
+  
+  // Pointer Events
+  ['pointerdown', PointerEvent],
+  ['pointerup', PointerEvent],
+  ['pointermove', PointerEvent],
+  ['pointerenter', PointerEvent],
+  ['pointerleave', PointerEvent],
+  ['pointerover', PointerEvent],
+  ['pointerout', PointerEvent],
+  ['gotpointercapture', PointerEvent],
+  ['lostpointercapture', PointerEvent],
+  
+  // Keyboard Events
+  ['keydown', KeyboardEvent],
+  ['keyup', KeyboardEvent],
+  ['keypress', KeyboardEvent], // deprecated but still supported
+  
+  // Input / Form Events
+  ['input', InputEvent],
+  ['change', Event],
+  ['submit', Event],
+  ['reset', Event],
+  ['focus', FocusEvent],
+  ['blur', FocusEvent],
+  ['focusin', FocusEvent],
+  ['focusout', FocusEvent],
+  
+  // Drag & Drop
+  ['drag', DragEvent],
+  ['dragstart', DragEvent],
+  ['dragend', DragEvent],
+  ['dragenter', DragEvent],
+  ['dragleave', DragEvent],
+  ['dragover', DragEvent],
+  ['drop', DragEvent],
+  
+  // Clipboard
+  ['copy', ClipboardEvent],
+  ['cut', ClipboardEvent],
+  ['paste', ClipboardEvent],
+  
+  // Touch Events
+  ['touchstart', TouchEvent],
+  ['touchend', TouchEvent],
+  ['touchmove', TouchEvent],
+  ['touchcancel', TouchEvent],
+  
+  // Media Events
+  ['play', Event],
+  ['pause', Event],
+  ['ended', Event],
+  ['timeupdate', Event],
+  ['volumechange', Event],
+  ['seeking', Event],
+  ['seeked', Event],
+  ['loadedmetadata', Event],
+  ['loadeddata', Event],
+  ['canplay', Event],
+  ['canplaythrough', Event],
+  ['durationchange', Event],
+  
+  // Progress / Resource Events
+  ['load', Event],
+  ['error', Event],
+  ['abort', Event],
+  ['progress', ProgressEvent],
+  ['loadstart', ProgressEvent],
+  ['loadend', ProgressEvent],
+  ['timeout', ProgressEvent],
+  
+  // Animation / Transition
+  ['animationstart', AnimationEvent],
+  ['animationend', AnimationEvent],
+  ['animationiteration', AnimationEvent],
+  ['transitionstart', TransitionEvent],
+  ['transitionend', TransitionEvent],
+  ['transitionrun', TransitionEvent],
+  ['transitioncancel', TransitionEvent],
+  
+  // Misc
+  ['scroll', Event],
+  ['resize', UIEvent],
+  ['hashchange', HashChangeEvent],
+  ['popstate', PopStateEvent],
+  ['beforeunload', Event],
+  ['unload', Event],
+  ['message', MessageEvent],
+  ['storage', StorageEvent],
+  ['online', Event],
+  ['offline', Event],
+]);
+
+
 export default {
   
-  // @element  @dataset 
-  // setElementDataset(el, dataObj = {}) {
-  //   if (dataObj && el) Object.entries(dataObj).forEach(([prop, val]) => el.dataset[prop] = val);
-  //   else this.log('no data provided')
-  // },
   
-  // @element  @dataset 
-  // getElementDataset(el) {
-  //   if (!el) return;
-  // return getElementDataset(el)
-  // },
-  
-  
+  // @ Dispatch PointerEvent
+  simulateEvent(target, type = 'pointerdown') {
+    const ev = new PointerEvent(type, {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    });
+    target.dispatchEvent(ev);
+  },
+
+  dispatchPointerEvent(target, type = 'pointerdown') {
+    const ev = new PointerEvent(type, {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    });
+    target.dispatchEvent(ev);
+  },
   
   // @ ADD REMOVE CLASS
   classList(el, add = true, ...classes) {
@@ -32,6 +145,7 @@ export default {
   qsa(selector, parentEl = document) {
     if (typeof selector === 'string') return parentEl.querySelectorAll(selector);
   },
+  
   
   createDOM(tag = 'div', {
     namespaceURI,
