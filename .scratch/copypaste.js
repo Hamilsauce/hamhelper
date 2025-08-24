@@ -1,5 +1,5 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
-const { event, date, array, utils, text, DOM } = ham;
+const { date, array, utils, text, DOM } = ham;
 ham.help('', 'event')
 const app = document.querySelector('.app');
 const controlsSvg = document.querySelector('#controls')

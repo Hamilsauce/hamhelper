@@ -13,7 +13,6 @@ const {
   timer,
   TwoWayMap,
   DOM,
-  event,
   array,
   help,
 } = H
@@ -61,7 +60,7 @@ const jsonMapJson2 = JSON.stringify(jsonmap2, null, 2)
 console.warn('jsonMapJson', jsonMapJson)
 
 
-event.selectAllContent(document.querySelector('.log'))
+// event.selectAllContent(document.querySelector('.log'))
 
 const scriptTag = document.createElement('script')
 const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -189,7 +188,7 @@ newb.style.width = '200px'
 newb.style.height = '200px'
 newb.style.background = 'purple'
 console.log('newb', newb);
-event.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
+// event.longPress(newb, 1000, (e) => e.target.style.background = e.target.style.background === 'blue' ? 'pink' : 'blue');
 
 DOM.qs('#app').appendChild(newb);
 DOM.qs('#app').innerHTML = `

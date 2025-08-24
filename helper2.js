@@ -1,5 +1,5 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
-const { waitMs, rx, DOM, TwoWayMap, event, date, array, utils, pipeline, text, help } = ham;
+const { waitMs, rx, DOM, TwoWayMap, date, array, utils, pipeline, text, help } = ham;
 import ham2 from './hamhelper1.0.0.js'
 const { addSvgPinchZoom } = ham2
 // console.time('timer1')
